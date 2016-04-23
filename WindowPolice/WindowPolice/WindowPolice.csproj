@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\HumanPhysData.cs" />
+    <Compile Include="Classes\Suspect.cs" />
+    <Compile Include="Classes\SuspectCollection.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -27,7 +27,7 @@ namespace WindowPolice
             string pass = this.textBox2.Text;
             string tempname = "";
             string temppass = "";
-            StreamReader fs = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\staff.txt");
+            StreamReader fs = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\staff.ipd");
             string check = fs.ReadLine();
             while(true)
             {
