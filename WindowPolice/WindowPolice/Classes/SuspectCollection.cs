@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
-namespace WindowPolice.Classes
+namespace WindowPolice
 {
     class SuspectCollection : List<Suspect>
     {
-        public void Print()
+        public void FillSuspectCollection()
         {
-            foreach (Suspect abc in this)
+            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\suspects.ipd");
+            string suspect = filerow.ReadLine();
+            if (suspect != null)
             {
-                abc.Show();
+                while (suspect != null)
+                {
+                    this.Add(new Suspect(suspect));
+                    suspect = filerow.ReadLine();
+                }
             }
         }
     }
