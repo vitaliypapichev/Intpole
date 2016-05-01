@@ -12,17 +12,19 @@ namespace WindowPolice
 {
     public partial class Interpole : Form
     {
-        public Interpole()
+        private SuspectCollection Suspects;
+        private KIACollection KilledInAction;
+        public Interpole() : base()
         {
             InitializeComponent();
+            Suspects = new SuspectCollection();
+            KilledInAction = new KIACollection();
         }
         private void Interpole_Load(object sender, EventArgs e)
         {
             LoginForm login = new LoginForm();
             if(login.ShowDialog() != DialogResult.None)
-            {
-                SuspectCollection Suspects = new SuspectCollection();
-                KIACollection KilledInAction = new KIACollection();
+            {             
                 Suspects.FillSuspectCollection();
                 KilledInAction.FillCollection();
                 Methods.PutActiveIntoTable(SuspectTable, Suspects);
@@ -40,7 +42,6 @@ namespace WindowPolice
             a.Location = this.Location;
             if(a.ShowDialog() == DialogResult.OK)
             {
-
                 a.Close();
             }
         }
@@ -92,6 +93,23 @@ namespace WindowPolice
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (KIA.Checked == true)
+            {
+                SuspectTable.Rows.Clear();
+                SuspTable.Text = "KIA List";
+                Methods.PutActiveIntoTable(SuspectTable, KilledInAction);
+            }
+            else
+            {
+                SuspectTable.Rows.Clear();
+                SuspTable.Text = "List of Suspects";
+                Methods.PutActiveIntoTable(SuspectTable, Suspects);
+            }
+            KIA.Location = new Point(SuspTable.Location.X + 7 + SuspTable.Width, KIA.Location.Y);
         }
     }
 }

@@ -21,12 +21,18 @@ namespace WindowPolice
             this.IfChildren = false;
             this.LastSeen = null;
             this.CrimesList = new List<string>();
+            this.Status = "KIA";
             this.KIAStatus = true;
         }
-        public KIASuspect(string Data)
+        public KIASuspect(string Data) 
             : base(Data)
         {
             this.KIAStatus = true;
+            Char[] a = new Char[] { '~' };
+            string[] alldata = Data.Split(a);
+            this.PlaceOfDeath = alldata[16];
+            this.DayOfDeath = Methods.CreateDate(alldata[17]);
+            this.ShortStory = alldata[18];
         }
         public void AddPlace(string Place)
         {

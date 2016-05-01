@@ -32,7 +32,7 @@ namespace WindowPolice
         {
             Char[] a = new Char[] { '~' };
             string[] alldata = Data.Split(a);
-            this.PhysData = new HumanPhysData(alldata[0], alldata[1], alldata[2], CreateDate(alldata[3]), alldata[4], alldata[5], alldata[6], alldata[7], Convert.ToInt32(alldata[8]));
+            this.PhysData = new HumanPhysData(alldata[0], alldata[1], alldata[2], Methods.CreateDate(alldata[3]), alldata[4], alldata[5], alldata[6], alldata[7], Convert.ToInt32(alldata[8]));
             this.CrimeNumber = Convert.ToInt32(alldata[9]);
             this.LastCrime = alldata[10];
             this.IfWife = Convert.ToBoolean(alldata[11]);
@@ -69,13 +69,6 @@ namespace WindowPolice
         public void Print()
         {
             System.Console.WriteLine(this.LastCrime);
-        }
-        static public DateTime CreateDate(string Date)
-        {
-            Char[] Characters = new Char[] { ',' };
-            string[] Strings = Date.Split(Characters);
-            Console.WriteLine(new DateTime(Convert.ToInt32(Strings[2]), Convert.ToInt32(Strings[1]), Convert.ToInt32(Strings[0])));
-            return new DateTime(Convert.ToInt32(Strings[2]), Convert.ToInt32(Strings[1]), Convert.ToInt32(Strings[0]));
         }
         static public List<string> CreateList(string Data)
         {

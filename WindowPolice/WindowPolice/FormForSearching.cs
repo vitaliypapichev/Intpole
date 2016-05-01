@@ -42,7 +42,7 @@ namespace WindowPolice
             if (SuspectRadio.Checked)
             {
                 textBox1.Enabled = true;
-                textBox1.BackColor = Color.LightGray;
+                textBox1.BackColor = Color.White;
                 KIA.Enabled = true;
             }
             else
