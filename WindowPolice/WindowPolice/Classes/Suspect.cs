@@ -66,10 +66,6 @@ namespace WindowPolice
         {
             this.IfChildren = HasHe;
         }
-        public void Print()
-        {
-            System.Console.WriteLine(this.LastCrime);
-        }
         static public List<string> CreateList(string Data)
         {
             Char[] Characters = new Char[] { ',', ' ' };

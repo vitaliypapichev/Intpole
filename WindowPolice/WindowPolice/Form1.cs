@@ -51,28 +51,9 @@ namespace WindowPolice
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void suspectBindingSource1_CurrentChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow cell = this.SuspectTable.Rows[e.RowIndex];
-            for(int i = 0; i < cell.Cells.Count; i++)
-            {
-
-            }
         }
 
         private void Interpole_SizeChanged(object sender, EventArgs e)
@@ -83,16 +64,12 @@ namespace WindowPolice
             }
             SuspectTable.Width = Convert.ToInt32(Math.Floor(this.Width / 1.4732965009208103130755064456722));
             SuspectTable.Height = Convert.ToInt32(Math.Floor(this.Height / 2.8571428571428571428571428571429));
-        }
-
-        private void dataGridView1_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            panel1.Width = SuspectTable.Width + 7;
+            panel1.Height = SuspectTable.Height + 7;
+            dataGridView1.Width = SuspectTable.Width;
+            dataGridView1.Height = SuspectTable.Height;
+            panel2.Width = dataGridView1.Width + 7;
+            panel2.Height = dataGridView1.Height + 7;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -110,6 +87,18 @@ namespace WindowPolice
                 Methods.PutActiveIntoTable(SuspectTable, Suspects);
             }
             KIA.Location = new Point(SuspTable.Location.X + 7 + SuspTable.Width, KIA.Location.Y);
+        }
+
+        private void SuspectTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow cell = this.SuspectTable.Rows[e.RowIndex];
+            for (int i = 0; i < cell.Cells.Count; i++)
+            {
+
+            }
+            Inform form = new Inform();
+
+            form.Show();
         }
     }
 }
