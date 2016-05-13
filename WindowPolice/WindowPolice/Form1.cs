@@ -92,13 +92,15 @@ namespace WindowPolice
         private void SuspectTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow cell = this.SuspectTable.Rows[e.RowIndex];
-            for (int i = 0; i < cell.Cells.Count; i++)
-            {
-
-            }
             Inform form = new Inform();
-
+            object[] b = Suspects.ElementAt(Convert.ToInt32(cell.Cells[cell.Cells.Count - 1].Value)).HumanDataToArrayForDataBase();
+            for (int i = 1; i < form.Controls.Count; i++)
+            {
+                MessageBox.Show(b[i-1].ToString());
+                form.Controls[form.Controls.Count - 1 - i].Text = b[i-1].ToString();
+            }
             form.Show();
         }
+
     }
 }

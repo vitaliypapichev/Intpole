@@ -36,17 +36,18 @@
             this.archiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SuspectTable = new System.Windows.Forms.DataGridView();
-            this.DataGridViewTextBoxColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataDrigViewTextBoxColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatronymicDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirthPlaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SuspTable = new System.Windows.Forms.Label();
             this.KartelsGroup = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.KIA = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.DataGridViewTextBoxColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataDrigViewTextBoxColumnSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PatronymicDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthPlaceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Example = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SuspectTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -110,7 +111,8 @@
             this.DataDrigViewTextBoxColumnSurname,
             this.PatronymicDataGridViewTextBoxColumn,
             this.BirthDateDataGridViewTextBoxColumn,
-            this.BirthPlaceDataGridViewTextBoxColumn});
+            this.BirthPlaceDataGridViewTextBoxColumn,
+            this.Example});
             this.SuspectTable.GridColor = System.Drawing.Color.Black;
             this.SuspectTable.Location = new System.Drawing.Point(4, 3);
             this.SuspectTable.Name = "SuspectTable";
@@ -120,51 +122,6 @@
             this.SuspectTable.Size = new System.Drawing.Size(543, 210);
             this.SuspectTable.TabIndex = 2;
             this.SuspectTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SuspectTable_CellDoubleClick);
-            // 
-            // DataGridViewTextBoxColumnName
-            // 
-            this.DataGridViewTextBoxColumnName.FillWeight = 253.8071F;
-            this.DataGridViewTextBoxColumnName.HeaderText = "Name";
-            this.DataGridViewTextBoxColumnName.MinimumWidth = 100;
-            this.DataGridViewTextBoxColumnName.Name = "DataGridViewTextBoxColumnName";
-            this.DataGridViewTextBoxColumnName.ReadOnly = true;
-            this.DataGridViewTextBoxColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // DataDrigViewTextBoxColumnSurname
-            // 
-            this.DataDrigViewTextBoxColumnSurname.FillWeight = 17.58791F;
-            this.DataDrigViewTextBoxColumnSurname.HeaderText = "Surname";
-            this.DataDrigViewTextBoxColumnSurname.MinimumWidth = 100;
-            this.DataDrigViewTextBoxColumnSurname.Name = "DataDrigViewTextBoxColumnSurname";
-            this.DataDrigViewTextBoxColumnSurname.ReadOnly = true;
-            this.DataDrigViewTextBoxColumnSurname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PatronymicDataGridViewTextBoxColumn
-            // 
-            this.PatronymicDataGridViewTextBoxColumn.FillWeight = 34.38072F;
-            this.PatronymicDataGridViewTextBoxColumn.HeaderText = "Patronymic";
-            this.PatronymicDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.PatronymicDataGridViewTextBoxColumn.Name = "PatronymicDataGridViewTextBoxColumn";
-            this.PatronymicDataGridViewTextBoxColumn.ReadOnly = true;
-            this.PatronymicDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // BirthDateDataGridViewTextBoxColumn
-            // 
-            this.BirthDateDataGridViewTextBoxColumn.FillWeight = 129.7017F;
-            this.BirthDateDataGridViewTextBoxColumn.HeaderText = "Years";
-            this.BirthDateDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.BirthDateDataGridViewTextBoxColumn.Name = "BirthDateDataGridViewTextBoxColumn";
-            this.BirthDateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.BirthDateDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // BirthPlaceDataGridViewTextBoxColumn
-            // 
-            this.BirthPlaceDataGridViewTextBoxColumn.FillWeight = 64.52259F;
-            this.BirthPlaceDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.BirthPlaceDataGridViewTextBoxColumn.MinimumWidth = 100;
-            this.BirthPlaceDataGridViewTextBoxColumn.Name = "BirthPlaceDataGridViewTextBoxColumn";
-            this.BirthPlaceDataGridViewTextBoxColumn.ReadOnly = true;
-            this.BirthPlaceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // SuspTable
             // 
@@ -250,6 +207,58 @@
             this.panel2.Size = new System.Drawing.Size(550, 216);
             this.panel2.TabIndex = 7;
             // 
+            // DataGridViewTextBoxColumnName
+            // 
+            this.DataGridViewTextBoxColumnName.FillWeight = 253.8071F;
+            this.DataGridViewTextBoxColumnName.HeaderText = "Name";
+            this.DataGridViewTextBoxColumnName.MinimumWidth = 100;
+            this.DataGridViewTextBoxColumnName.Name = "DataGridViewTextBoxColumnName";
+            this.DataGridViewTextBoxColumnName.ReadOnly = true;
+            this.DataGridViewTextBoxColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // DataDrigViewTextBoxColumnSurname
+            // 
+            this.DataDrigViewTextBoxColumnSurname.FillWeight = 17.58791F;
+            this.DataDrigViewTextBoxColumnSurname.HeaderText = "Surname";
+            this.DataDrigViewTextBoxColumnSurname.MinimumWidth = 100;
+            this.DataDrigViewTextBoxColumnSurname.Name = "DataDrigViewTextBoxColumnSurname";
+            this.DataDrigViewTextBoxColumnSurname.ReadOnly = true;
+            this.DataDrigViewTextBoxColumnSurname.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // PatronymicDataGridViewTextBoxColumn
+            // 
+            this.PatronymicDataGridViewTextBoxColumn.FillWeight = 34.38072F;
+            this.PatronymicDataGridViewTextBoxColumn.HeaderText = "Patronymic";
+            this.PatronymicDataGridViewTextBoxColumn.MinimumWidth = 100;
+            this.PatronymicDataGridViewTextBoxColumn.Name = "PatronymicDataGridViewTextBoxColumn";
+            this.PatronymicDataGridViewTextBoxColumn.ReadOnly = true;
+            this.PatronymicDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // BirthDateDataGridViewTextBoxColumn
+            // 
+            this.BirthDateDataGridViewTextBoxColumn.FillWeight = 129.7017F;
+            this.BirthDateDataGridViewTextBoxColumn.HeaderText = "Years";
+            this.BirthDateDataGridViewTextBoxColumn.MinimumWidth = 100;
+            this.BirthDateDataGridViewTextBoxColumn.Name = "BirthDateDataGridViewTextBoxColumn";
+            this.BirthDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.BirthDateDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // BirthPlaceDataGridViewTextBoxColumn
+            // 
+            this.BirthPlaceDataGridViewTextBoxColumn.FillWeight = 64.52259F;
+            this.BirthPlaceDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.BirthPlaceDataGridViewTextBoxColumn.MinimumWidth = 100;
+            this.BirthPlaceDataGridViewTextBoxColumn.Name = "BirthPlaceDataGridViewTextBoxColumn";
+            this.BirthPlaceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.BirthPlaceDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Example
+            // 
+            this.Example.HeaderText = "ColWithSuspect";
+            this.Example.Name = "Example";
+            this.Example.ReadOnly = true;
+            this.Example.Visible = false;
+            // 
             // Interpole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,14 +302,15 @@
         private System.Windows.Forms.Label SuspTable;
         private System.Windows.Forms.Label KartelsGroup;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox KIA;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataDrigViewTextBoxColumnSurname;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatronymicDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn BirthDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn BirthPlaceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.CheckBox KIA;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Example;
 
     }
 }

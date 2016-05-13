@@ -11,16 +11,20 @@ namespace WindowPolice
     {
         public static void PutActiveIntoTable(DataGridView Table, SuspectCollection Suspects)
         {
-            foreach (Suspect temp in Suspects)
+            for (int i = 0; i < Suspects.Count; i++ )
             {
-                Table.Rows.Add(temp.HumanDataToArrayForDataBase());
+                object[] array = Suspects.ElementAt(i).HumanDataToArrayForDataBase();
+                array[array.Length - 1] = i;
+                Table.Rows.Add(array);
             }
         }
         public static void PutActiveIntoTable(DataGridView Table, KIACollection Suspects)
         {
-            foreach (Suspect temp in Suspects)
+            for (int i = 0; i < Suspects.Count; i++)
             {
-                Table.Rows.Add(temp.HumanDataToArrayForDataBase());
+                object[] array = Suspects.ElementAt(i).HumanDataToArrayForDataBase();
+                array[array.Length - 1] = i;
+                Table.Rows.Add(array);
             }
         }
         static public DateTime CreateDate(string Date)

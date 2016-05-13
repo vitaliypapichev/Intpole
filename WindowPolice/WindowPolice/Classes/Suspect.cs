@@ -84,7 +84,7 @@ namespace WindowPolice
         }
         public object[] HumanDataToArrayForDataBase()
         {
-            object[] result = new object[5];
+            object[] result = new object[6];
             object[] copy = PhysData.ToArray();
             for (int i = 0; i < 3; i++)
             {
@@ -92,6 +92,7 @@ namespace WindowPolice
             }
             result[3] = copy[5];
             result[4] = this.Status;
+            result[5] = 0;
             return result;
         }
     }
