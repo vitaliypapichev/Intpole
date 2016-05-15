@@ -133,6 +133,40 @@ namespace WindowPolice
                         box.Image = Img;
                         box.SizeMode = PictureBoxSizeMode.StretchImage;
                     }
+                    if (form.Controls[i].Name.Equals("FlagNext") && KValue.Key.Equals("Was last seen"))
+                    {
+                        string country = KValue.Value.Substring(KValue.Value.IndexOf(',') + 2);
+                        PictureBox box = new PictureBox();
+                        box = (PictureBox)form.Controls[i];
+                        Bitmap Img;
+                        try
+                        {
+                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\\" + country + ".png");
+                        }
+                        catch (System.Exception exe)
+                        {
+                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png");
+                        }
+                        box.Image = Img;
+                        box.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    if (KValue.Key.Equals("Status") && form.Controls[i].Name.Equals("InterpolAction"))
+                    {
+                        PictureBox box = new PictureBox();
+                        box = (PictureBox)form.Controls[i];
+                        Bitmap Img;
+                        if(KValue.Value == "Arrested")
+                        {
+                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\busted.png");
+                            box.SizeMode = PictureBoxSizeMode.Zoom;
+                        }
+                        else
+                        {
+                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\LOGO_WANTED_V3_TORCIDO_ROJO.png");
+                            box.SizeMode = PictureBoxSizeMode.StretchImage;
+                        }
+                        box.Image = Img;
+                    }
                 }
             }
             form.Show();

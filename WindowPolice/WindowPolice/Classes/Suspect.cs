@@ -111,7 +111,7 @@ namespace WindowPolice
             Dict.Add("Hair", this.PhysData.Hair);
             Dict.Add("Height", (this.PhysData.Height.ToString() + "cm"));
             Dict.Add("Number of crimes", this.CrimeNumber.ToString());
-            Dict.Add("List of crimes", this.CrimesList.ToString());
+            Dict.Add("List of crimes", this.CrimesList.ElementAt(0));
             Dict.Add("Last commited crime", this.LastCrime);
             Dict.Add("Was last seen", this.LastSeen);
             Dict.Add("Has wife", this.IfWife.ToString());
