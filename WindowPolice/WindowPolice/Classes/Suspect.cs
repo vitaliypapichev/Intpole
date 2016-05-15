@@ -19,6 +19,7 @@ namespace WindowPolice
         public string LastSeen { get; protected set; }
         public string LastCrime { get; protected set; }
         public string Status { get; protected set; }
+        public string PicLoc;
         public Suspect()
         {
             this.CrimeNumber = 0;
@@ -40,6 +41,7 @@ namespace WindowPolice
             this.LastSeen = alldata[13];
             this.CrimesList = CreateList(alldata[14]);
             this.Status = alldata[15];
+            this.PicLoc = alldata[16];
         }
         public void AddCrime(string Crime, string PlaceOfCrime)
         {
@@ -94,6 +96,30 @@ namespace WindowPolice
             result[4] = this.Status;
             result[5] = 0;
             return result;
+        }
+        public Dictionary<string, string> ReturnData()
+        {
+            Dictionary<string, string> Dict = new Dictionary<string, string>();
+            Dict.Add("Name", this.PhysData.Name);
+            Dict.Add("Surname", this.PhysData.Surname);
+            Dict.Add("Patronymic", this.PhysData.Patronymic);
+            Dict.Add("Date of birth", this.PhysData.BirthData.ToString("d"));
+            Dict.Add("Place of birth", this.PhysData.BirthPlace);
+            Dict.Add("Years", this.PhysData.Years.ToString());
+            Dict.Add("Build", this.PhysData.Build);
+            Dict.Add("Eyes", this.PhysData.Eyes);
+            Dict.Add("Hair", this.PhysData.Hair);
+            Dict.Add("Height", (this.PhysData.Height.ToString() + "cm"));
+            Dict.Add("Number of crimes", this.CrimeNumber.ToString());
+            Dict.Add("List of crimes", this.CrimesList.ToString());
+            Dict.Add("Last commited crime", this.LastCrime);
+            Dict.Add("Was last seen", this.LastSeen);
+            Dict.Add("Has wife", this.IfWife.ToString());
+            Dict.Add("Has children", this.IfChildren.ToString());
+            Dict.Add("Status", this.Status);
+            Dict.Add("Photo", this.PicLoc);
+            Dict.Add("No", this.PhysData.BirthData.Day.ToString() + this.PhysData.BirthData.Month.ToString() + this.PhysData.BirthData.Year.ToString() + this.PhysData.Name[0] + this.PhysData.Surname[0]);
+            return Dict;
         }
     }
 }

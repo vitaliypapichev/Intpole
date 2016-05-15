@@ -91,13 +91,49 @@ namespace WindowPolice
 
         private void SuspectTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow cell = this.SuspectTable.Rows[e.RowIndex];
-            Inform form = new Inform();
-            object[] b = Suspects.ElementAt(Convert.ToInt32(cell.Cells[cell.Cells.Count - 1].Value)).HumanDataToArrayForDataBase();
-            for (int i = 1; i < form.Controls.Count; i++)
+            try
             {
-                MessageBox.Show(b[i-1].ToString());
-                form.Controls[form.Controls.Count - 1 - i].Text = b[i-1].ToString();
+                DataGridViewRow cell = this.SuspectTable.Rows[e.RowIndex];
+            }
+            catch(ArgumentOutOfRangeException ex)
+            {
+                return;
+            }
+            DataGridViewRow celll = this.SuspectTable.Rows[e.RowIndex];
+            Inform form = new Inform();
+            Dictionary<string, string> Dict = Suspects.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)).ReturnData();
+            for (int i = 0; i < form.Controls.Count; i++)
+            {
+                foreach(KeyValuePair<string,string> KValue in Dict)
+                {
+                    if (form.Controls[i].Text.Equals(KValue.Key))
+                        form.Controls[i].Text = KValue.Value;
+                    if (form.Controls[i].Name.Equals(KValue.Key) && form.Controls[i].Name.Equals("Photo"))
+                    {
+                        PictureBox box = new PictureBox();
+                        box = (PictureBox)form.Controls[i];
+                        Bitmap Img = new Bitmap(KValue.Value);
+                        box.Image = Img;
+                        box.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                    if(form.Controls[i].Name.Equals("Flag") && KValue.Key.Equals("Place of birth"))
+                    {
+                        string country = KValue.Value.Substring(KValue.Value.IndexOf(',') + 2);
+                        PictureBox box = new PictureBox();
+                        box = (PictureBox)form.Controls[i];
+                        Bitmap Img;
+                        try
+                        {
+                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\\" + country + ".png");
+                        }
+                        catch (System.Exception exe)
+                        {
+                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png");
+                        }
+                        box.Image = Img;
+                        box.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
+                }
             }
             form.Show();
         }

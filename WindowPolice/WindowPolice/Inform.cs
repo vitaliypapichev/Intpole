@@ -20,5 +20,15 @@ namespace WindowPolice
         private void Inform_Load(object sender, EventArgs e)
         {
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
