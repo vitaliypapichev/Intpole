@@ -14,6 +14,7 @@ namespace WindowPolice
     {
         private SuspectCollection Suspects;
         private KIACollection KilledInAction;
+        private SuspectCollection ActiveSuspectCollection;
         public Interpole() : base()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace WindowPolice
                 Suspects.FillSuspectCollection();
                 KilledInAction.FillCollection();
                 Methods.PutActiveIntoTable(SuspectTable, Suspects);
+                ActiveSuspectCollection = Suspects;
             }
         }
 
@@ -79,12 +81,14 @@ namespace WindowPolice
                 SuspectTable.Rows.Clear();
                 SuspTable.Text = "KIA List";
                 Methods.PutActiveIntoTable(SuspectTable, KilledInAction);
+                ActiveSuspectCollection = KilledInAction;
             }
             else
             {
                 SuspectTable.Rows.Clear();
                 SuspTable.Text = "List of Suspects";
                 Methods.PutActiveIntoTable(SuspectTable, Suspects);
+                ActiveSuspectCollection = Suspects;
             }
             KIA.Location = new Point(SuspTable.Location.X + 7 + SuspTable.Width, KIA.Location.Y);
         }
@@ -101,7 +105,7 @@ namespace WindowPolice
             }
             DataGridViewRow celll = this.SuspectTable.Rows[e.RowIndex];
             Inform form = new Inform();
-            Dictionary<string, string> Dict = Suspects.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)).ReturnData();
+            Dictionary<string, string> Dict = ActiveSuspectCollection.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)).ReturnData();
             for (int i = 0; i < form.Controls.Count; i++)
             {
                 foreach(KeyValuePair<string,string> KValue in Dict)
@@ -121,34 +125,14 @@ namespace WindowPolice
                         string country = KValue.Value.Substring(KValue.Value.IndexOf(',') + 2);
                         PictureBox box = new PictureBox();
                         box = (PictureBox)form.Controls[i];
-                        Bitmap Img;
-                        try
-                        {
-                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\\" + country + ".png");
-                        }
-                        catch (System.Exception exe)
-                        {
-                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png");
-                        }
-                        box.Image = Img;
-                        box.SizeMode = PictureBoxSizeMode.StretchImage;
+                        Methods.SetFlag(country, box);
                     }
                     if (form.Controls[i].Name.Equals("FlagNext") && KValue.Key.Equals("Was last seen"))
                     {
                         string country = KValue.Value.Substring(KValue.Value.IndexOf(',') + 2);
                         PictureBox box = new PictureBox();
                         box = (PictureBox)form.Controls[i];
-                        Bitmap Img;
-                        try
-                        {
-                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\\" + country + ".png");
-                        }
-                        catch (System.Exception exe)
-                        {
-                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png");
-                        }
-                        box.Image = Img;
-                        box.SizeMode = PictureBoxSizeMode.StretchImage;
+                        Methods.SetFlag(country, box);
                     }
                     if (KValue.Key.Equals("Status") && form.Controls[i].Name.Equals("InterpolAction"))
                     {
@@ -160,6 +144,12 @@ namespace WindowPolice
                             Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\busted.png");
                             box.SizeMode = PictureBoxSizeMode.Zoom;
                         }
+                        else
+                            if(KValue.Value == "KIA")
+                            {
+                                Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\KIA.png");
+                                box.SizeMode = PictureBoxSizeMode.Zoom;
+                            }
                         else
                         {
                             Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\LOGO_WANTED_V3_TORCIDO_ROJO.png");

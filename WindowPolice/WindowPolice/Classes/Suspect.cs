@@ -11,7 +11,7 @@ namespace WindowPolice
 
     public class Suspect
     {
-        private HumanPhysData PhysData;
+        protected HumanPhysData PhysData;
         public int CrimeNumber { get; protected set; }
         public List<string> CrimesList;
         public bool IfWife { get; protected set; }
@@ -109,9 +109,9 @@ namespace WindowPolice
             Dict.Add("Build", this.PhysData.Build);
             Dict.Add("Eyes", this.PhysData.Eyes);
             Dict.Add("Hair", this.PhysData.Hair);
-            Dict.Add("Height", (this.PhysData.Height.ToString() + "cm"));
+            Dict.Add("Height", (this.PhysData.Height.ToString() + " cm"));
             Dict.Add("Number of crimes", this.CrimeNumber.ToString());
-            Dict.Add("List of crimes", this.CrimesList.ElementAt(0));
+            Dict.Add("List of crimes", Methods.CrimesToString(this.CrimesList));
             Dict.Add("Last commited crime", this.LastCrime);
             Dict.Add("Was last seen", this.LastSeen);
             Dict.Add("Has wife", this.IfWife.ToString());

@@ -7,9 +7,9 @@ using System.IO;
 
 namespace WindowPolice
 {
-    class KIACollection : List<KIASuspect>
+    class KIACollection : SuspectCollection
     {
-        public void FillCollection()
+        public void FillCollection() 
         {
             StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\kia.ipd");
             string suspect = filerow.ReadLine();
