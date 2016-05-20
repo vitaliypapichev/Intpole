@@ -13,11 +13,11 @@ namespace WindowPolice
     {
         protected HumanPhysData PhysData;
         public int CrimeNumber { get; protected set; }
-        public List<string> CrimesList;
+        public Dictionary<Crime, DateTime> Crimes;
         public bool IfWife { get; protected set; }
         public bool IfChildren { get; protected set; }
         public string LastSeen { get; protected set; }
-        public string LastCrime { get; protected set; }
+        public Crime LastCrime { get; protected set; }
         public string Status { get; protected set; }
         public string PicLoc;
         public Suspect()
@@ -27,7 +27,7 @@ namespace WindowPolice
             this.IfWife = false;
             this.IfChildren = false;
             this.LastSeen = null;
-            this.CrimesList = new List<string>();
+            this.Crimes = new Dictionary<Crime, DateTime>();
         }
         public Suspect(string Data)
         {
@@ -35,24 +35,24 @@ namespace WindowPolice
             string[] alldata = Data.Split(a);
             this.PhysData = new HumanPhysData(alldata[0], alldata[1], alldata[2], Methods.CreateDate(alldata[3]), alldata[4], alldata[5], alldata[6], alldata[7], Convert.ToInt32(alldata[8]));
             this.CrimeNumber = Convert.ToInt32(alldata[9]);
-            this.LastCrime = alldata[10];
+            this.LastCrime = Methods.SetCrime(alldata[10]);
             this.IfWife = Convert.ToBoolean(alldata[11]);
             this.IfChildren = Convert.ToBoolean(alldata[12]);
             this.LastSeen = alldata[13];
-            this.CrimesList = CreateList(alldata[14]);
+            this.Crimes = CreateDictionary(alldata[14]);
             this.Status = alldata[15];
             this.PicLoc = alldata[16];
         }
-        public void AddCrime(string Crime, string PlaceOfCrime)
+        public void AddCrime(Crime Crime, string PlaceOfCrime, DateTime Date)
         {
             this.LastSeen = PlaceOfCrime;
-            this.CrimesList.Add(Crime);
+            this.Crimes.Add(Crime, Date);
             this.LastCrime = Crime;
             CrimeNumber++;
         }
-        public void AddCrime(string Crime)
+        public void AddCrime(Crime Crime, DateTime Date)
         {
-            this.CrimesList.Add(Crime);
+            this.Crimes.Add(Crime, Date);
             this.LastCrime = Crime;
             CrimeNumber++;
         }
@@ -81,7 +81,7 @@ namespace WindowPolice
         }
         public override string ToString()
         {
-            string temp = string.Join(", ", CrimesList);
+            string temp = string.Join(", ", Crimes);
             return PhysData.ToString() + "; " + CrimeNumber + "; " + IfWife + "; " + IfChildren + "; " + LastSeen + "; " + LastCrime + "; " + temp + ";";
         }
         public object[] HumanDataToArrayForDataBase()
@@ -111,8 +111,8 @@ namespace WindowPolice
             Dict.Add("Hair", this.PhysData.Hair);
             Dict.Add("Height", (this.PhysData.Height.ToString() + " cm"));
             Dict.Add("Number of crimes", this.CrimeNumber.ToString());
-            Dict.Add("List of crimes", Methods.CrimesToString(this.CrimesList));
-            Dict.Add("Last commited crime", this.LastCrime);
+            Dict.Add("List of crimes", this.Crimes.ToString());
+            Dict.Add("Last commited crime", this.LastCrime.ToString());
             Dict.Add("Was last seen", this.LastSeen);
             Dict.Add("Has wife", this.IfWife.ToString());
             Dict.Add("Has children", this.IfChildren.ToString());
@@ -120,6 +120,17 @@ namespace WindowPolice
             Dict.Add("Photo", this.PicLoc);
             Dict.Add("No", this.PhysData.BirthData.Day.ToString() + this.PhysData.BirthData.Month.ToString() + this.PhysData.BirthData.Year.ToString() + this.PhysData.Name[0] + this.PhysData.Surname[0]);
             return Dict;
+        }
+        private Dictionary<Crime, DateTime> CreateDictionary(string param)
+        {
+            Dictionary<Crime, DateTime> result = new Dictionary<Crime, DateTime>();
+            Char[] Characters = new Char[] { ',' };
+            string[] a = param.Split(Characters);
+            for(int i = 0 ; i < a.Length; i++)
+            {
+                result.Add(Methods.SetCrime(a[i].Substring(0, a[i].IndexOf(':'))), Methods.CreateDate(a[i].Substring(a[i].IndexOf(':') + 1)));
+            }
+            return result;
         }
     }
 }

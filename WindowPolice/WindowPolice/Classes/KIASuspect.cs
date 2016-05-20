@@ -20,7 +20,7 @@ namespace WindowPolice
             this.IfWife = false;
             this.IfChildren = false;
             this.LastSeen = null;
-            this.CrimesList = new List<string>();
+            this.Crimes = new Dictionary<Crime, DateTime>();
             this.Status = "KIA";
             this.KIAStatus = true;
         }
@@ -61,8 +61,8 @@ namespace WindowPolice
             Dict.Add("Hair", this.PhysData.Hair);
             Dict.Add("Height", (this.PhysData.Height.ToString() + " cm"));
             Dict.Add("Number of crimes", this.CrimeNumber.ToString());
-            Dict.Add("List of crimes", Methods.CrimesToString(this.CrimesList));
-            Dict.Add("Last commited crime", this.LastCrime);
+            Dict.Add("List of crimes", this.Crimes.ToString());
+            Dict.Add("Last commited crime", this.LastCrime.ToString());
             Dict.Add("Was last seen", this.LastSeen);
             Dict.Add("Has wife", this.IfWife.ToString());
             Dict.Add("Has children", this.IfChildren.ToString());

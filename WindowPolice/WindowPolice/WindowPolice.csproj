@@ -44,12 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Crime.cs" />
     <Compile Include="Classes\HumanPhysData.cs" />
     <Compile Include="Classes\KIACollection.cs" />
     <Compile Include="Classes\KIASuspect.cs" />
     <Compile Include="Classes\Methods.cs" />
     <Compile Include="Classes\Suspect.cs" />
     <Compile Include="Classes\SuspectCollection.cs" />
+    <Compile Include="Crimes List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crimes List.Designer.cs">
+      <DependentUpon>Crimes List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +83,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Crimes List.resx">
+      <DependentUpon>Crimes List.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

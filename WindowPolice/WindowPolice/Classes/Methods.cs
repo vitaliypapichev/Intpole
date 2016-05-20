@@ -30,7 +30,7 @@ namespace WindowPolice
         }
         static public DateTime CreateDate(string Date)
         {
-            Char[] Characters = new Char[] { ',' };
+            Char[] Characters = new Char[] { '.' };
             string[] Strings = Date.Split(Characters);
             Console.WriteLine(new DateTime(Convert.ToInt32(Strings[2]), Convert.ToInt32(Strings[1]), Convert.ToInt32(Strings[0])));
             return new DateTime(Convert.ToInt32(Strings[2]), Convert.ToInt32(Strings[1]), Convert.ToInt32(Strings[0]));
@@ -66,6 +66,21 @@ namespace WindowPolice
                 }
             }
             return result;
+        }
+        public static Crime SetCrime(string CrimeType)
+        {
+            string CrimeName = CrimeType.Substring(0, CrimeType.IndexOf('>')).Trim();
+            string CrimeSpec = CrimeType.Substring(CrimeType.IndexOf('>')+1);
+            switch(CrimeName)
+            {
+                case "PropCrime": return new PropertyCrime(CrimeSpec);
+                case "LifeThreat": return new LifeThreat(CrimeSpec);
+                case "Hijacking": return new Hijacking(CrimeSpec);
+                case "Terrorism": return new Terrorism(CrimeSpec);
+                case "Corrupt": return new Corruption(CrimeSpec);
+                case "Drugs": return new Drugs(CrimeSpec);
+            }
+            return new Crime();
         }
     }
 }

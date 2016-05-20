@@ -69,9 +69,9 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.FlagNext = new System.Windows.Forms.PictureBox();
-            this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.InterpolAction = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Photo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Flag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FlagNext)).BeginInit();
@@ -324,7 +324,6 @@
             // 
             // Flag
             // 
-            this.Flag.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Flag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Flag.ErrorImage = ((System.Drawing.Image)(resources.GetObject("Flag.ErrorImage")));
             this.Flag.Image = ((System.Drawing.Image)(resources.GetObject("Flag.Image")));
@@ -512,7 +511,6 @@
             // 
             // FlagNext
             // 
-            this.FlagNext.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.FlagNext.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlagNext.ErrorImage = ((System.Drawing.Image)(resources.GetObject("FlagNext.ErrorImage")));
             this.FlagNext.Image = ((System.Drawing.Image)(resources.GetObject("FlagNext.Image")));
@@ -522,17 +520,6 @@
             this.FlagNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.FlagNext.TabIndex = 39;
             this.FlagNext.TabStop = false;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label39.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label39.Location = new System.Drawing.Point(603, 412);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(107, 23);
-            this.label39.TabIndex = 41;
-            this.label39.Text = "List of crimes";
             // 
             // label40
             // 
@@ -556,6 +543,16 @@
             this.InterpolAction.TabIndex = 43;
             this.InterpolAction.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(604, 412);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 25);
+            this.button1.TabIndex = 44;
+            this.button1.Text = "Show Crimes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Inform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,9 +560,9 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1021, 567);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.InterpolAction);
             this.Controls.Add(this.label40);
-            this.Controls.Add(this.label39);
             this.Controls.Add(this.FlagNext);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label36);
@@ -663,8 +660,8 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.PictureBox FlagNext;
-        private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.PictureBox InterpolAction;
+        private System.Windows.Forms.Button button1;
     }
 }

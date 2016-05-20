@@ -12,9 +12,11 @@ namespace WindowPolice
 {
     public partial class Inform : Form
     {
-        public Inform()
+        private Suspect Susp;
+        public Inform(Suspect Susp)
         {
             InitializeComponent();
+            this.Susp = Susp;
         }
 
         private void Inform_Load(object sender, EventArgs e)
@@ -34,6 +36,21 @@ namespace WindowPolice
         private void label24_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Crimes_List CrimesList = new Crimes_List(Susp);
+            CrimesList.Location = new Point(this.Location.X + 30, this.Location.Y + this.Height - CrimesList.Height - 30);
+            if(CrimesList.ShowDialog() != DialogResult.None)
+            {
+
+            }
         }
     }
 }

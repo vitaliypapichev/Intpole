@@ -104,7 +104,7 @@ namespace WindowPolice
                 return;
             }
             DataGridViewRow celll = this.SuspectTable.Rows[e.RowIndex];
-            Inform form = new Inform();
+            Inform form = new Inform(ActiveSuspectCollection.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)));
             Dictionary<string, string> Dict = ActiveSuspectCollection.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)).ReturnData();
             for (int i = 0; i < form.Controls.Count; i++)
             {
