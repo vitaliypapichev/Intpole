@@ -20,6 +20,8 @@ namespace WindowPolice
         public Crime LastCrime { get; protected set; }
         public string Status { get; protected set; }
         public string PicLoc;
+        public string SearchedIn;
+        public StoryCollection History;
         public Suspect()
         {
             this.CrimeNumber = 0;
@@ -28,9 +30,12 @@ namespace WindowPolice
             this.IfChildren = false;
             this.LastSeen = null;
             this.Crimes = new Dictionary<Crime, DateTime>();
+            this.SearchedIn = null;
+            History = new StoryCollection();
         }
         public Suspect(string Data)
         {
+            History = new StoryCollection();
             Char[] a = new Char[] { '~' };
             string[] alldata = Data.Split(a);
             this.PhysData = new HumanPhysData(alldata[0], alldata[1], alldata[2], Methods.CreateDate(alldata[3]), alldata[4], alldata[5], alldata[6], alldata[7], Convert.ToInt32(alldata[8]));
@@ -40,8 +45,10 @@ namespace WindowPolice
             this.IfChildren = Convert.ToBoolean(alldata[12]);
             this.LastSeen = alldata[13];
             this.Crimes = CreateDictionary(alldata[14]);
-            this.Status = alldata[15];
-            this.PicLoc = alldata[16];
+            this.SearchedIn = alldata[15];
+            this.Status = alldata[16];
+            this.PicLoc = alldata[17];
+            History.FillCollection(alldata[18]);
         }
         public void AddCrime(Crime Crime, string PlaceOfCrime, DateTime Date)
         {
@@ -84,7 +91,7 @@ namespace WindowPolice
             string temp = string.Join(", ", Crimes);
             return PhysData.ToString() + "; " + CrimeNumber + "; " + IfWife + "; " + IfChildren + "; " + LastSeen + "; " + LastCrime + "; " + temp + ";";
         }
-        public object[] HumanDataToArrayForDataBase()
+        public virtual object[] HumanDataToArrayForDataBase()
         {
             object[] result = new object[6];
             object[] copy = PhysData.ToArray();
@@ -121,7 +128,7 @@ namespace WindowPolice
             Dict.Add("No", this.PhysData.BirthData.Day.ToString() + this.PhysData.BirthData.Month.ToString() + this.PhysData.BirthData.Year.ToString() + this.PhysData.Name[0] + this.PhysData.Surname[0]);
             return Dict;
         }
-        private Dictionary<Crime, DateTime> CreateDictionary(string param)
+        protected virtual Dictionary<Crime, DateTime> CreateDictionary(string param)
         {
             Dictionary<Crime, DateTime> result = new Dictionary<Crime, DateTime>();
             Char[] Characters = new Char[] { ',' };

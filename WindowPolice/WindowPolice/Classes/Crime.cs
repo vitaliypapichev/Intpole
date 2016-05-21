@@ -32,7 +32,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return base.ToString();
+            return "Property Crime : " + this.specialization;
         }
     }
     public class LifeThreat : Crime
@@ -45,7 +45,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return base.ToString();
+            return "Life Threat : " + this.specialization;
         }
     }
     public class Hacking : Crime
@@ -58,7 +58,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return base.ToString();
+            return "Hacking : " + this.specialization;
         }
     }
     public class Terrorism : Crime
@@ -71,7 +71,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return base.ToString();
+            return "Terrorism : " + this.specialization;
         }
     }
     public class Hijacking : Crime
@@ -85,7 +85,6 @@ namespace WindowPolice
         public Hijacking(string CrimeName)
             : base(CrimeName)
         {
-            CrimeName = CrimeName.ToLower();
             switch(CrimeName)
             {
                 case "Plane Hj.": this.gravofoff = "High Gravity"; break;
@@ -100,7 +99,7 @@ namespace WindowPolice
         }
         public override string ToString()
         {
-            return base.ToString();
+            return "Hijacking : " + this.specialization + " => " + this.gravofoff;
         }
     }
     public class Corruption : Crime
@@ -113,7 +112,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return base.ToString();
+            return "Corruption : " + this.specialization;
         }
     }
     public class Drugs : Crime
@@ -126,7 +125,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return base.ToString();
+            return "Drugs : " + this.specialization;
         }
     }
 }

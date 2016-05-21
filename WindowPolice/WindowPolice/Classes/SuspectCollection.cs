@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WindowPolice
 {
-    class SuspectCollection : List<Suspect>
+    public class SuspectCollection : List<Suspect>
     {
         public void FillSuspectCollection()
         {

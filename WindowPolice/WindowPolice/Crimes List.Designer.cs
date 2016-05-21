@@ -41,7 +41,7 @@
             this.TimeDateColumn});
             this.dataGridView1.Location = new System.Drawing.Point(0, -1);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(284, 264);
+            this.dataGridView1.Size = new System.Drawing.Size(345, 312);
             this.dataGridView1.TabIndex = 0;
             // 
             // CrimeTextBox
@@ -50,7 +50,7 @@
             this.CrimeTextBox.HeaderText = "Crime";
             this.CrimeTextBox.Name = "CrimeTextBox";
             this.CrimeTextBox.ReadOnly = true;
-            this.CrimeTextBox.Width = 155;
+            this.CrimeTextBox.Width = 220;
             // 
             // TimeDateColumn
             // 
@@ -63,7 +63,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(345, 310);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

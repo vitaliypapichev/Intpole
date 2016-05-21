@@ -52,5 +52,14 @@ namespace WindowPolice
 
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Map Map = new Map(Susp);
+            if(Map.ShowDialog() != DialogResult.None)
+            {
+
+            }
+        }
     }
 }

@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace WindowPolice
 {
-    class Methods
+    public class Methods
     {
         public static void PutActiveIntoTable(DataGridView Table, SuspectCollection Suspects)
         {
@@ -74,6 +75,7 @@ namespace WindowPolice
             switch(CrimeName)
             {
                 case "PropCrime": return new PropertyCrime(CrimeSpec);
+                case "Hacking": return new Hacking(CrimeSpec);
                 case "LifeThreat": return new LifeThreat(CrimeSpec);
                 case "Hijacking": return new Hijacking(CrimeSpec);
                 case "Terrorism": return new Terrorism(CrimeSpec);
@@ -81,6 +83,21 @@ namespace WindowPolice
                 case "Drugs": return new Drugs(CrimeSpec);
             }
             return new Crime();
+        }
+        public static Country RetrieveCities(string Data)
+        {
+            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\"+Data+".ipd");
+            string country = filerow.ReadLine();
+            Country CountryName = new Country();
+            if (country != null)
+            {
+                while (country != null)
+                {
+                    CountryName.CreateCities(country);
+                    country = filerow.ReadLine();
+                }
+            }
+            return CountryName;
         }
     }
 }

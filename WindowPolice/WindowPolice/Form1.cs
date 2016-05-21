@@ -25,9 +25,10 @@ namespace WindowPolice
         {
             LoginForm login = new LoginForm();
             if(login.ShowDialog() != DialogResult.None)
-            {             
+            {
                 Suspects.FillSuspectCollection();
-                KilledInAction.FillCollection();
+                KilledInAction.FillSuspectCollection();
+                SuspectTable.Rows.Clear();
                 Methods.PutActiveIntoTable(SuspectTable, Suspects);
                 ActiveSuspectCollection = Suspects;
             }

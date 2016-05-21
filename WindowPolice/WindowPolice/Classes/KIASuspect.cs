@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowPolice
 {
@@ -16,7 +17,7 @@ namespace WindowPolice
             : base()
         {
             this.CrimeNumber = 0;
-            this.LastCrime = null;
+            this.LastCrime = new Crime();
             this.IfWife = false;
             this.IfChildren = false;
             this.LastSeen = null;
@@ -25,15 +26,23 @@ namespace WindowPolice
             this.KIAStatus = true;
         }
         public KIASuspect(string Data) 
-            : base(Data)
         {
             this.KIAStatus = true;
             Char[] a = new Char[] { '~' };
             string[] alldata = Data.Split(a);
-            this.PlaceOfDeath = alldata[16];
-            this.DayOfDeath = Methods.CreateDate(alldata[17]);
-            this.ShortStory = alldata[18];
-            this.PicLoc = alldata[19];
+            this.PhysData = new HumanPhysData(alldata[0], alldata[1], alldata[2], Methods.CreateDate(alldata[3]), alldata[4], alldata[5], alldata[6], alldata[7], Convert.ToInt32(alldata[8]));
+            this.CrimeNumber = Convert.ToInt32(alldata[9]);
+            this.LastCrime = Methods.SetCrime(alldata[10]);
+            this.IfWife = Convert.ToBoolean(alldata[11]);
+            this.IfChildren = Convert.ToBoolean(alldata[12]);
+            this.LastSeen = alldata[13];
+            this.Crimes = CreateDictionary(alldata[14]);
+            this.SearchedIn = alldata[15];
+            this.Status = alldata[16];
+            this.PicLoc = alldata[17];
+            this.PlaceOfDeath = alldata[18];
+            this.DayOfDeath = Methods.CreateDate(alldata[19]);
+            this.ShortStory = alldata[20];
         }
         public void AddPlace(string Place)
         {
@@ -46,6 +55,10 @@ namespace WindowPolice
         public void AddStory(string Story)
         {
             this.ShortStory = Story;
+        }
+        public override object[] HumanDataToArrayForDataBase()
+        {
+            return base.HumanDataToArrayForDataBase();
         }
         public new Dictionary<string, string> ReturnData()
         {
@@ -70,6 +83,10 @@ namespace WindowPolice
             Dict.Add("Photo", this.PicLoc);
             Dict.Add("No", this.PhysData.BirthData.Day.ToString() + this.PhysData.BirthData.Month.ToString() + this.PhysData.BirthData.Year.ToString() + this.PhysData.Name[0] + this.PhysData.Surname[0]);
             return Dict;
+        }
+        protected override Dictionary<Crime, DateTime> CreateDictionary(string param)
+        {
+            return base.CreateDictionary(param);
         }
     }
 }
