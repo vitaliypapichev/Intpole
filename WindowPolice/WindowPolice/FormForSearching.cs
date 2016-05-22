@@ -12,9 +12,13 @@ namespace WindowPolice
 {
     public partial class FormForSearching : Form
     {
-        public FormForSearching()
+        private SuspectCollection Collect;
+        private DataGridView Table;
+        public FormForSearching(SuspectCollection Collect, DataGridView Table)
         {
             InitializeComponent();
+            this.Collect = Collect;
+            this.Table = Table;
         }
 
         private void FormForSearching_Load(object sender, EventArgs e)
@@ -24,7 +28,7 @@ namespace WindowPolice
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Methods.Find(Collect, Table, textBox1.Text);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -64,6 +68,11 @@ namespace WindowPolice
                 textBox2.Enabled = false;
                 textBox2.BackColor = Color.LightGray;
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

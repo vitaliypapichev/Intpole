@@ -117,9 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Little hint:
+Searching works with data type like : Name:John, 
+PropCrime:Robbery and else;
+
+So here are keys for searching :
+Name; Surname; Patro; Years; SearchedIn; 
+HasWife, HasChild(true,false); LastCrime;
+WasSeen; Build; Hair; Eyes; Height; Birth(dd.mm.yyyy)
+
+Keys for crimes :
+PropCrime:Robbering or Theft or Burglary 
+LifeThreat:Murder or Killing
+Hack:Military or Banking
+Hijack:(Car Hj., Bycicle Hj., Motorbike Hj., 
+Ship Hj., Plane Hj., Train Hj.)
+Corrupt:Politic or Sport or Education
+Drugs:GrugDealing or GrudStoring or CreatingDrugs
+
+Use splitter ';' beetween searching parameters</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

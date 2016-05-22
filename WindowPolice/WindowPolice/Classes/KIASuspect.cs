@@ -32,7 +32,7 @@ namespace WindowPolice
             string[] alldata = Data.Split(a);
             this.PhysData = new HumanPhysData(alldata[0], alldata[1], alldata[2], Methods.CreateDate(alldata[3]), alldata[4], alldata[5], alldata[6], alldata[7], Convert.ToInt32(alldata[8]));
             this.CrimeNumber = Convert.ToInt32(alldata[9]);
-            this.LastCrime = Methods.SetCrime(alldata[10]);
+            this.LastCrime = Methods.SetCrime(alldata[10], '>');
             this.IfWife = Convert.ToBoolean(alldata[11]);
             this.IfChildren = Convert.ToBoolean(alldata[12]);
             this.LastSeen = alldata[13];

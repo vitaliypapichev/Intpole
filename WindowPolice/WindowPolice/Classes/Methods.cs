@@ -90,19 +90,19 @@ namespace WindowPolice
             }
             return result;
         }
-        public static Crime SetCrime(string CrimeType)
+        public static Crime SetCrime(string CrimeType, char ch)
         {
-            string CrimeName = CrimeType.Substring(0, CrimeType.IndexOf('>')).Trim();
-            string CrimeSpec = CrimeType.Substring(CrimeType.IndexOf('>')+1);
-            switch(CrimeName)
+            string CrimeName = CrimeType.Substring(0, CrimeType.IndexOf(ch)).Trim();
+            string CrimeSpec = CrimeType.Substring(CrimeType.IndexOf(ch)+1);
+            switch(CrimeName.ToLower())
             {
-                case "PropCrime": return new PropertyCrime(CrimeSpec);
-                case "Hacking": return new Hacking(CrimeSpec);
-                case "LifeThreat": return new LifeThreat(CrimeSpec);
-                case "Hijacking": return new Hijacking(CrimeSpec);
-                case "Terrorism": return new Terrorism(CrimeSpec);
-                case "Corrupt": return new Corruption(CrimeSpec);
-                case "Drugs": return new Drugs(CrimeSpec);
+                case "propcrime": return new PropertyCrime(CrimeSpec);
+                case "hacking": return new Hacking(CrimeSpec);
+                case "lifethreat": return new LifeThreat(CrimeSpec);
+                case "hijacking": return new Hijacking(CrimeSpec);
+                case "terrorism": return new Terrorism(CrimeSpec);
+                case "corrupt": return new Corruption(CrimeSpec);
+                case "drugs": return new Drugs(CrimeSpec);
             }
             return new Crime();
         }
@@ -120,6 +120,21 @@ namespace WindowPolice
                 }
             }
             return CountryName;
+        }
+        public static void Find(SuspectCollection Collect, DataGridView Table, string Text)
+        {
+            Char[] splitters = { ';' };
+            string[] findparams = Text.Split(splitters);
+            Table.Rows.Clear();
+            for (int i = 0; i < Collect.Count; i++)
+            {
+                if (Collect.ElementAt(i).MatchesQuery(findparams))
+                {
+                    object[] array = Collect.ElementAt(i).HumanDataToArrayForDataBase();
+                    array[array.Length - 1] = i;
+                    Table.Rows.Add(array);
+                }
+            }
         }
     }
 }

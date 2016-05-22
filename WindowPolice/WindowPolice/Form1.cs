@@ -41,7 +41,7 @@ namespace WindowPolice
 
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormForSearching a = new FormForSearching();
+            FormForSearching a = new FormForSearching(this.ActiveSuspectCollection, SuspectTable);
             a.Location = this.Location;
             if(a.ShowDialog() == DialogResult.OK)
             {

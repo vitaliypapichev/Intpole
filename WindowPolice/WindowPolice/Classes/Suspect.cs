@@ -40,7 +40,7 @@ namespace WindowPolice
             string[] alldata = Data.Split(a);
             this.PhysData = new HumanPhysData(alldata[0], alldata[1], alldata[2], Methods.CreateDate(alldata[3]), alldata[4], alldata[5], alldata[6], alldata[7], Convert.ToInt32(alldata[8]));
             this.CrimeNumber = Convert.ToInt32(alldata[9]);
-            this.LastCrime = Methods.SetCrime(alldata[10]);
+            this.LastCrime = Methods.SetCrime(alldata[10],'>');
             this.IfWife = Convert.ToBoolean(alldata[11]);
             this.IfChildren = Convert.ToBoolean(alldata[12]);
             this.LastSeen = alldata[13];
@@ -125,6 +125,7 @@ namespace WindowPolice
             Dict.Add("Has children", this.IfChildren.ToString());
             Dict.Add("Status", this.Status);
             Dict.Add("Photo", this.PicLoc);
+            Dict.Add("SearchedIn", this.SearchedIn);
             Dict.Add("No", this.PhysData.BirthData.Day.ToString() + this.PhysData.BirthData.Month.ToString() + this.PhysData.BirthData.Year.ToString() + this.PhysData.Name[0] + this.PhysData.Surname[0]);
             return Dict;
         }
@@ -135,9 +136,58 @@ namespace WindowPolice
             string[] a = param.Split(Characters);
             for(int i = 0 ; i < a.Length; i++)
             {
-                result.Add(Methods.SetCrime(a[i].Substring(0, a[i].IndexOf(':'))), Methods.CreateDate(a[i].Substring(a[i].IndexOf(':') + 1)));
+                result.Add(Methods.SetCrime(a[i].Substring(0, a[i].IndexOf(':')), '>'), Methods.CreateDate(a[i].Substring(a[i].IndexOf(':') + 1)));
             }
             return result;
+        }
+        public bool MatchesQuery(string[] Data)
+        {
+            int counter = 0;
+            Dictionary<string, string> dictio = this.ReturnData();
+            for (int i = 0; i < Data.Length; i++)
+            {
+                foreach (KeyValuePair<string, string> comparer in dictio)
+                {
+                    if (Data[i].Substring(0, Data[i].IndexOf(':')).ToLower().Equals(comparer.Key.ToLower()))
+                    {
+                        if (Data[i].Substring(Data[i].IndexOf(':') + 1).ToLower().Equals(comparer.Value.ToLower()))
+                            counter++;
+                    }
+                }
+                foreach (KeyValuePair<Crime, DateTime> comparer in Crimes)
+                {
+                    if (comparer.Key.GetType().Name.ToLower().Equals(ReplaceStr(Data[i].ToLower().Substring(0,Data[i].IndexOf(':')))) && comparer.Key.Equals(Methods.SetCrime(Data[i].ToLower(), ':')))
+                    {
+                        counter++;
+                    }
+                }
+            }
+            if(counter == Data.Length)
+            {
+                return true;
+            }
+            return false;
+        }
+        private string ReplaceStr(string Data)
+        {
+            switch (Data)
+            {
+                case "name": return "Name";
+                case "sname": return "Surname";
+                case "namepatro": return "Patronymic";
+                case "birth": return "Date of birth";
+                case "bplace": return "Place of birth";
+                case "crimenum": return "Number of crimes";
+                case "lastcrime": return "Last commited crime";
+                case "wasseen": return "Was last seen";
+                case "haswife": return "Has wife";
+                case "propcrime": return "PropertyCrime";
+                case "hack": return "Hacking";
+                case "hijack": return "Hijacking";
+                case "Corrupt": return "Corruption";
+                case "Terror": return "Terrorism";
+            }
+            return Data;
         }
     }
 }

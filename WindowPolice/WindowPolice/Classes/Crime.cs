@@ -21,6 +21,10 @@ namespace WindowPolice
         {
             return this.GetType().Name + " : " + this.specialization;
         }
+        public virtual bool Equals(Crime Another)
+        {
+            return this.specialization.ToLower().Equals(Another.specialization.ToLower());
+        }
     }
     public class PropertyCrime : Crime
     {
@@ -33,6 +37,10 @@ namespace WindowPolice
         public override string ToString()
         {
             return "Property Crime : " + this.specialization;
+        }
+        public override bool Equals(Crime Another)
+        {
+            return base.Equals(Another);
         }
     }
     public class LifeThreat : Crime
@@ -47,6 +55,10 @@ namespace WindowPolice
         {
             return "Life Threat : " + this.specialization;
         }
+        public override bool Equals(Crime Another)
+        {
+            return base.Equals(Another);
+        }
     }
     public class Hacking : Crime
     {
@@ -59,6 +71,10 @@ namespace WindowPolice
         public override string ToString()
         {
             return "Hacking : " + this.specialization;
+        }
+        public override bool Equals(Crime Another)
+        {
+            return base.Equals(Another);
         }
     }
     public class Terrorism : Crime
@@ -73,6 +89,10 @@ namespace WindowPolice
         {
             return "Terrorism : " + this.specialization;
         }
+        public override bool Equals(Crime Another)
+        {
+            return base.Equals(Another);
+        }
     }
     public class Hijacking : Crime
     {
@@ -85,6 +105,7 @@ namespace WindowPolice
         public Hijacking(string CrimeName)
             : base(CrimeName)
         {
+            this.specialization = CrimeName;
             switch(CrimeName)
             {
                 case "Plane Hj.": this.gravofoff = "High Gravity"; break;
@@ -101,6 +122,10 @@ namespace WindowPolice
         {
             return "Hijacking : " + this.specialization + " => " + this.gravofoff;
         }
+        public override bool Equals(Crime Another)
+        {
+            return base.Equals(Another);
+        }
     }
     public class Corruption : Crime
     {
@@ -114,6 +139,10 @@ namespace WindowPolice
         {
             return "Corruption : " + this.specialization;
         }
+        public override bool Equals(Crime Another)
+        {
+            return base.Equals(Another);
+        }
     }
     public class Drugs : Crime
     {
@@ -126,6 +155,10 @@ namespace WindowPolice
         public override string ToString()
         {
             return "Drugs : " + this.specialization;
+        }
+        public override bool Equals(Crime Another)
+        {
+            return base.Equals(Another);
         }
     }
 }
