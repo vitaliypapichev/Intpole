@@ -11,6 +11,28 @@ namespace WindowPolice
 {
     public class Methods
     {
+        public static Cursor SetPointerCursor(StoryCollection Collection, Point Location)
+        {
+            foreach (Story History in Collection)
+            {
+                if (Location.X > History.Location.X - 5 && Location.X < History.Location.X + 5 && Location.Y > History.Location.Y - 5 && Location.Y < History.Location.Y + 5)
+                {
+                    return Cursors.Hand;
+                }
+            }
+            return Cursors.Arrow;
+        }
+        public static void FillStory(Point Location, DataGridView Table, StoryCollection Collection)
+        {
+            Table.Rows.Clear();
+            foreach(Story History in Collection)
+            {
+                if(Location.X > History.Location.X - 5 && Location.X < History.Location.X + 5 && Location.Y > History.Location.Y - 5 && Location.Y < History.Location.Y + 5)
+                {
+                    Table.Rows.Add(History.RetrieveData());
+                }
+            }
+        }
         public static void PutActiveIntoTable(DataGridView Table, SuspectCollection Suspects)
         {
             for (int i = 0; i < Suspects.Count; i++)

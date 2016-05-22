@@ -25,21 +25,44 @@ namespace WindowPolice
         {
             return new Point(Convert.ToInt32(Data.Substring(0, Data.IndexOf(';'))), Convert.ToInt32(Data.Substring(Data.IndexOf(';') + 1)));
         }
-        public void Draw(Graphics Graphic)
+        public void Draw(Graphics Graphic, StoryCollection Collection)
         {
             GraphicsPath Path = new GraphicsPath();
-            Path.AddEllipse(Cities.ElementAt(0).Value.X-5, Cities.ElementAt(0).Value.Y-5, 10, 10);
-            for(int i = 1; i < Cities.Count; i++)
+            SolidBrush kek = new SolidBrush(Color.Blue);
+            Point pos1 = new Point();
+            Point pos2 = new Point();
+            for (int i = 0; i < Collection.Count - 1; i++ )
             {
-                Path.AddLine(Cities.ElementAt(i - 1).Value, Cities.ElementAt(i).Value);
-                Path.AddEllipse(Cities.ElementAt(i).Value.X - 5, Cities.ElementAt(i).Value.Y-5, 10, 10);
+                pos1 = new Point();
+                pos2 = new Point();
+                bool breaker = false;
+                foreach(KeyValuePair<string, Point> comparer in Cities)
+                {
+                    if(Collection.ElementAt(i).State == comparer.Key)
+                    {
+                        pos1 = comparer.Value;
+                        Collection.ElementAt(i).Location = comparer.Value;
+                    }
+                    if (Collection.ElementAt(i + 1).State == comparer.Key)
+                    {
+                        pos2 = comparer.Value;
+                    }    
+                    if (Collection.ElementAt(i).State == comparer.Key && Collection.ElementAt(i + 1).State == comparer.Key)
+                    {
+                        breaker = true;
+                        break;
+                    }            
+                }
+                if (breaker)
+                    continue;
+                Path.AddLine(pos1, pos2);
+                Path.AddEllipse(pos1.X - 5, pos1.Y - 5, 10, 10);
+                Graphic.FillEllipse(kek, pos1.X - 5, pos1.Y - 5, 10, 10);
             }
+            Collection.ElementAt(Collection.Count-1).Location = pos2;
+            Path.AddEllipse(pos2.X - 5, pos2.Y - 5, 10, 10);
+            Graphic.FillEllipse(kek, pos2.X - 5, pos2.Y - 5, 10, 10);
             Graphic.DrawPath(new Pen(Color.Black, 2), Path);
-            for (int i = 0; i < Cities.Count; i++)
-            {
-                SolidBrush kek = new SolidBrush(Color.Blue);
-                Graphic.FillEllipse(kek, Cities.ElementAt(i).Value.X-5, Cities.ElementAt(i).Value.Y-5, 10, 10);
-            }
         }
     }
 }

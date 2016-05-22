@@ -15,7 +15,6 @@ namespace WindowPolice
             string[] history = Data.Split(characters);
             foreach(string str in history)
             {
-                MessageBox.Show(str);
                 this.Add(new Story(str));
             }
         }

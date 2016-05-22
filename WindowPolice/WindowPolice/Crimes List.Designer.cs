@@ -56,6 +56,7 @@
             // 
             this.TimeDateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TimeDateColumn.HeaderText = "Date\\Time";
+            this.TimeDateColumn.MinimumWidth = 65;
             this.TimeDateColumn.Name = "TimeDateColumn";
             this.TimeDateColumn.ReadOnly = true;
             // 

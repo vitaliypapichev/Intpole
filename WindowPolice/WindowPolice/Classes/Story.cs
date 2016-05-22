@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace WindowPolice
 {
@@ -13,14 +14,24 @@ namespace WindowPolice
         public string State;
         public string Fact;
         public DateTime Date;
+        public Point Location;
         public Story(string Data)
         {
-            int a = Data.IndexOf("=>");
-            int b = Data.IndexOf('^');
-            int c = Data.IndexOf("$#");
-            MessageBox.Show(a.ToString());
-            MessageBox.Show(b.ToString());
-            MessageBox.Show(c.ToString());
+            char[] arr = { '>', '=', '#' };
+            string[] a = Data.Split(arr);
+            this.State = a[0];
+            this.Place = a[1];
+            this.Fact = a[2];
+            this.Date = Methods.CreateDate(a[3]);
+            this.Location = new Point();
+        }
+        public string[] RetrieveData()
+        {
+            string[] result = new string[3];
+            result[0] = this.Place;
+            result[1] = this.Fact;
+            result[2] = this.Date.ToString("dd/MM/yyyy");
+            return result;
         }
     }
 }
