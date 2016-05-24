@@ -33,7 +33,7 @@ namespace WindowPolice
         }
         public override string ToString()
         {
-            return Name + "; " + Surname + "; " + Patronymic + "; " + BirthData.Date.ToString() + "; " + BirthPlace + "; " + Build + "; " + Hair + "; " + Eyes + "; " + Height + ";";
+            return Name + "~" + Surname + "~" + Patronymic + "~" + BirthData.Date.ToString("dd/MM/yyyy") + "~" + BirthPlace + "~" + Build + "~" + Hair + "~" + Eyes + "~" + Height;
         }
         public object[] ToArray()
         {

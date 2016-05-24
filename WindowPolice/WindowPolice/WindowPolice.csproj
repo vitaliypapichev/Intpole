@@ -44,11 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adding.Designer.cs">
+      <DependentUpon>Adding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Country.cs" />
     <Compile Include="Classes\Crime.cs" />
     <Compile Include="Classes\HumanPhysData.cs" />
-    <Compile Include="Classes\KIACollection.cs" />
-    <Compile Include="Classes\KIASuspect.cs" />
     <Compile Include="Classes\Methods.cs" />
     <Compile Include="Classes\Story.cs" />
     <Compile Include="Classes\StoryCollection.cs" />
@@ -92,6 +96,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Adding.resx">
+      <DependentUpon>Adding.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crimes List.resx">
       <DependentUpon>Crimes List.cs</DependentUpon>
     </EmbeddedResource>

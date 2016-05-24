@@ -33,5 +33,9 @@ namespace WindowPolice
             result[2] = this.Date.ToString("dd/MM/yyyy");
             return result;
         }
+        public override string ToString()
+        {
+            return this.State + '>' + this.Place + '#' + this.Fact + '=' + this.Date.ToString("dd/MM/yyyy");
+        }
     }
 }

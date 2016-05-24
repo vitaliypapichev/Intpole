@@ -47,13 +47,12 @@ namespace WindowPolice
             {
                 textBox1.Enabled = true;
                 textBox1.BackColor = Color.White;
-                KIA.Enabled = true;
             }
             else
             {
                 textBox1.Enabled = false;
                 textBox1.BackColor = Color.LightGray;
-                KIA.Enabled = false;
+
             }
         }
         private void GroupRadio_CheckedChanged(object sender, EventArgs e)

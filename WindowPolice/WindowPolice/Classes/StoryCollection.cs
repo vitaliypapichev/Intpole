@@ -18,5 +18,18 @@ namespace WindowPolice
                 this.Add(new Story(str));
             }
         }
+        public override string ToString()
+        {
+            string result = "";
+            bool dotcomma = false;
+            foreach(Story comparer in this)
+            {
+                if (dotcomma)
+                    result += ';';
+                result += comparer.ToString();
+                dotcomma = true;
+            }
+            return result;
+        }
     }
 }

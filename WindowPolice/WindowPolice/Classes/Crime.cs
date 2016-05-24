@@ -19,7 +19,7 @@ namespace WindowPolice
         }
         public override string ToString()
         {
-            return this.GetType().Name + " : " + this.specialization;
+            return this.GetType().Name + ">" + this.specialization;
         }
         public virtual bool Equals(Crime Another)
         {
@@ -36,7 +36,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return "Property Crime : " + this.specialization;
+            return "PropCrime>" + this.specialization;
         }
         public override bool Equals(Crime Another)
         {
@@ -53,7 +53,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return "Life Threat : " + this.specialization;
+            return "LifeThreat>" + this.specialization;
         }
         public override bool Equals(Crime Another)
         {
@@ -70,7 +70,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return "Hacking : " + this.specialization;
+            return "Hacking>" + this.specialization;
         }
         public override bool Equals(Crime Another)
         {
@@ -87,7 +87,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return "Terrorism : " + this.specialization;
+            return "Terrorism>" + this.specialization;
         }
         public override bool Equals(Crime Another)
         {
@@ -120,7 +120,7 @@ namespace WindowPolice
         }
         public override string ToString()
         {
-            return "Hijacking : " + this.specialization + " => " + this.gravofoff;
+            return "Hijacking>" + this.specialization;
         }
         public override bool Equals(Crime Another)
         {
@@ -137,7 +137,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return "Corruption : " + this.specialization;
+            return "Corruption>" + this.specialization;
         }
         public override bool Equals(Crime Another)
         {
@@ -154,7 +154,7 @@ namespace WindowPolice
         { }
         public override string ToString()
         {
-            return "Drugs : " + this.specialization;
+            return "Drugs>" + this.specialization;
         }
         public override bool Equals(Crime Another)
         {

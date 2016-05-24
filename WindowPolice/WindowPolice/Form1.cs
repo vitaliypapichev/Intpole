@@ -7,19 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace WindowPolice
 {
     public partial class Interpole : Form
     {
         private SuspectCollection Suspects;
-        private KIACollection KilledInAction;
-        private SuspectCollection ActiveSuspectCollection;
         public Interpole() : base()
         {
             InitializeComponent();
             Suspects = new SuspectCollection();
-            KilledInAction = new KIACollection();
         }
         private void Interpole_Load(object sender, EventArgs e)
         {
@@ -27,10 +25,8 @@ namespace WindowPolice
             if(login.ShowDialog() != DialogResult.None)
             {
                 Suspects.FillSuspectCollection();
-                KilledInAction.FillSuspectCollection();
                 SuspectTable.Rows.Clear();
                 Methods.PutActiveIntoTable(SuspectTable, Suspects);
-                ActiveSuspectCollection = Suspects;
             }
         }
 
@@ -41,7 +37,7 @@ namespace WindowPolice
 
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormForSearching a = new FormForSearching(this.ActiveSuspectCollection, SuspectTable);
+            FormForSearching a = new FormForSearching(this.Suspects, SuspectTable);
             a.Location = this.Location;
             if(a.ShowDialog() == DialogResult.OK)
             {
@@ -75,25 +71,6 @@ namespace WindowPolice
             panel2.Height = dataGridView1.Height + 7;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (KIA.Checked == true)
-            {
-                SuspectTable.Rows.Clear();
-                SuspTable.Text = "KIA List";
-                Methods.PutActiveIntoTable(SuspectTable, KilledInAction);
-                ActiveSuspectCollection = KilledInAction;
-            }
-            else
-            {
-                SuspectTable.Rows.Clear();
-                SuspTable.Text = "List of Suspects";
-                Methods.PutActiveIntoTable(SuspectTable, Suspects);
-                ActiveSuspectCollection = Suspects;
-            }
-            KIA.Location = new Point(SuspTable.Location.X + 7 + SuspTable.Width, KIA.Location.Y);
-        }
-
         private void SuspectTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -105,8 +82,8 @@ namespace WindowPolice
                 return;
             }
             DataGridViewRow celll = this.SuspectTable.Rows[e.RowIndex];
-            Inform form = new Inform(ActiveSuspectCollection.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)));
-            Dictionary<string, string> Dict = ActiveSuspectCollection.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)).ReturnData();
+            Inform form = new Inform(Suspects.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)));
+            Dictionary<string, string> Dict = Suspects.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)).ReturnData();
             for (int i = 0; i < form.Controls.Count; i++)
             {
                 foreach(KeyValuePair<string,string> KValue in Dict)
@@ -146,12 +123,6 @@ namespace WindowPolice
                             box.SizeMode = PictureBoxSizeMode.Zoom;
                         }
                         else
-                            if(KValue.Value == "KIA")
-                            {
-                                Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\KIA.png");
-                                box.SizeMode = PictureBoxSizeMode.Zoom;
-                            }
-                        else
                         {
                             Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\LOGO_WANTED_V3_TORCIDO_ROJO.png");
                             box.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -161,6 +132,24 @@ namespace WindowPolice
                 }
             }
             form.Show();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Adding AddForm = new Adding(SuspectTable,Suspects);
+            AddForm.Show();
+        }
+
+        private void Interpole_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FileStream file = new FileStream(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\suspects.ipd", FileMode.Create);
+            StreamWriter writer = new StreamWriter(file);
+            foreach(Suspect Susp in Suspects)
+            {
+                 writer.WriteLine(Susp.ToString());
+            }
+            writer.Close();
+            file.Close();
         }
 
     }

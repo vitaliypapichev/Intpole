@@ -123,10 +123,9 @@ Searching works with data type like : Name:John,
 PropCrime:Robbery and else;
 
 So here are keys for searching :
-Name; Surname; Patro; Years; SearchedIn; 
+Name; Sname; Patro; Years; SearchedIn; 
 HasWife, HasChild(true,false); LastCrime;
 WasSeen; Build; Hair; Eyes; Height; Birth(dd.mm.yyyy)
-
 Keys for crimes :
 PropCrime:Robbering or Theft or Burglary 
 LifeThreat:Murder or Killing
@@ -134,7 +133,8 @@ Hack:Military or Banking
 Hijack:(Car Hj., Bycicle Hj., Motorbike Hj., 
 Ship Hj., Plane Hj., Train Hj.)
 Corrupt:Politic or Sport or Education
-Drugs:GrugDealing or GrudStoring or CreatingDrugs
+Drugs:Grug Dealing or Grud Storing or Creating Drugs
+Terror:Terrorism
 
 Use splitter ';' beetween searching parameters</value>
   </data>

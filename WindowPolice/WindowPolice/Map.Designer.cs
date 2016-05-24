@@ -37,12 +37,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CityDataGridView,
             this.FactDataGrid,
             this.DataDATAgridView});
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 450);
+            this.dataGridView1.Location = new System.Drawing.Point(1, 451);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(433, 232);
             this.dataGridView1.TabIndex = 0;

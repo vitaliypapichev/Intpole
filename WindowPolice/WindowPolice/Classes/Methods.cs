@@ -35,15 +35,7 @@ namespace WindowPolice
         }
         public static void PutActiveIntoTable(DataGridView Table, SuspectCollection Suspects)
         {
-            for (int i = 0; i < Suspects.Count; i++)
-            {
-                object[] array = Suspects.ElementAt(i).HumanDataToArrayForDataBase();
-                array[array.Length - 1] = i;
-                Table.Rows.Add(array);
-            }
-        }
-        public static void PutActiveIntoTable(DataGridView Table, KIACollection Suspects)
-        {
+            Table.Rows.Clear();
             for (int i = 0; i < Suspects.Count; i++)
             {
                 object[] array = Suspects.ElementAt(i).HumanDataToArrayForDataBase();
@@ -109,6 +101,7 @@ namespace WindowPolice
         public static Country RetrieveCities(string Data)
         {
             StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\"+Data+".ipd");
+            filerow.ReadLine();
             string country = filerow.ReadLine();
             Country CountryName = new Country();
             if (country != null)
@@ -135,6 +128,45 @@ namespace WindowPolice
                     Table.Rows.Add(array);
                 }
             }
+        }
+        public static void FindRegions(string County, ComboBox Combob)
+        {
+            Combob.Items.Clear();
+            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\"+County+".ipd");
+            Char[] characters = { ';' };
+            string[] result = filerow.ReadLine().Split(characters);
+            for(int i = 0; i < result.Length; i++)
+            {
+                Combob.Items.Add(result[i]);
+            }
+            Combob.Text = Combob.Items[0].ToString();
+        }
+        public static void FindInFileCrime(string Crime, ComboBox Combob)
+        {
+            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\Crimes.ipd");
+            Char[] characters = { ';' };
+            string result = filerow.ReadLine();
+            string[] query;
+            if(result.Split(characters)[0].Equals(Crime))
+            {
+                query = result.Substring(result.IndexOf(';')+1).Split(characters);
+                for(int i = 0; i < query.Length; i++)
+                {
+                    Combob.Items.Add(query[i]);
+                }
+                Combob.Text = Combob.Items[0].ToString();
+                return;
+            }
+            while(!result.Split(characters)[0].Equals(Crime))
+            {
+                result = filerow.ReadLine();
+            }
+            query = result.Substring(result.IndexOf(';') + 1).Split(characters);
+            for (int i = 0; i < query.Length; i++)
+            {
+                Combob.Items.Add(query[i]);
+            }
+            Combob.Text = Combob.Items[0].ToString();
         }
     }
 }

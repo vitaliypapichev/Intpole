@@ -22,7 +22,7 @@ namespace WindowPolice
 
         private void Map_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\mp" + Susp.SearchedIn + ".png");
+                this.BackgroundImage = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\mp" + Susp.SearchedIn + ".png");
         }
         private void Map_Activated(object sender, EventArgs e)
         {

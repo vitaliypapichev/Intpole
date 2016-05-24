@@ -88,8 +88,7 @@ namespace WindowPolice
         }
         public override string ToString()
         {
-            string temp = string.Join(", ", Crimes);
-            return PhysData.ToString() + "; " + CrimeNumber + "; " + IfWife + "; " + IfChildren + "; " + LastSeen + "; " + LastCrime + "; " + temp + ";";
+            return PhysData.ToString() + "~" + this.CrimeNumber.ToString() + "~" + this.LastCrime.ToString() + "~" + IfWife.ToString() + "~" + IfChildren.ToString() + "~" + this.LastSeen + "~" + CrimeString() +"~" + this.SearchedIn + "~" + this.Status + "~" + this.PicLoc + "~" + History.ToString();
         }
         public virtual object[] HumanDataToArrayForDataBase()
         {
@@ -102,6 +101,19 @@ namespace WindowPolice
             result[3] = copy[5];
             result[4] = this.Status;
             result[5] = 0;
+            return result;
+        }
+        private string CrimeString()
+        {
+            string result = "";
+            bool dotcomma = false;
+            foreach(KeyValuePair<Crime,DateTime> comparer in Crimes)
+            {
+                if (dotcomma)
+                    result += ", ";
+                result+=comparer.Key.ToString() + ':' + comparer.Value.ToString("dd/MM/yyyy");
+                dotcomma = true;
+            }
             return result;
         }
         public Dictionary<string, string> ReturnData()
@@ -184,8 +196,8 @@ namespace WindowPolice
                 case "propcrime": return "PropertyCrime";
                 case "hack": return "Hacking";
                 case "hijack": return "Hijacking";
-                case "Corrupt": return "Corruption";
-                case "Terror": return "Terrorism";
+                case "corrupt": return "Corruption";
+                case "terror": return "Terrorism";
             }
             return Data;
         }

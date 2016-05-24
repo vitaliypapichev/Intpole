@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormForSearching));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.KIA = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspectRadio = new System.Windows.Forms.RadioButton();
             this.GroupRadio = new System.Windows.Forms.RadioButton();
@@ -59,19 +58,6 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // KIA
-            // 
-            this.KIA.AutoSize = true;
-            this.KIA.BackColor = System.Drawing.Color.White;
-            this.KIA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.KIA.Location = new System.Drawing.Point(12, 136);
-            this.KIA.Name = "KIA";
-            this.KIA.Size = new System.Drawing.Size(142, 20);
-            this.KIA.TabIndex = 2;
-            this.KIA.Text = "Was killed in action";
-            this.KIA.UseVisualStyleBackColor = false;
-            this.KIA.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // textBox1
             // 
@@ -130,7 +116,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(260, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(384, 380);
+            this.label1.Size = new System.Drawing.Size(396, 380);
             this.label1.TabIndex = 6;
             this.label1.Text = resources.GetString("label1.Text");
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -142,14 +128,13 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(646, 391);
+            this.ClientSize = new System.Drawing.Size(654, 391);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.GroupRadio);
             this.Controls.Add(this.SuspectRadio);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.KIA);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.DoubleBuffered = true;
@@ -169,7 +154,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox KIA;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RadioButton SuspectRadio;
         private System.Windows.Forms.RadioButton GroupRadio;
