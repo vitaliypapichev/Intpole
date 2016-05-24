@@ -65,10 +65,6 @@ namespace WindowPolice
             SuspectTable.Height = Convert.ToInt32(Math.Floor(this.Height / 2.8571428571428571428571428571429));
             panel1.Width = SuspectTable.Width + 7;
             panel1.Height = SuspectTable.Height + 7;
-            dataGridView1.Width = SuspectTable.Width;
-            dataGridView1.Height = SuspectTable.Height;
-            panel2.Width = dataGridView1.Width + 7;
-            panel2.Height = dataGridView1.Height + 7;
         }
 
         private void SuspectTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

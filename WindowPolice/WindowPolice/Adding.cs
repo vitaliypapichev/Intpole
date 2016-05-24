@@ -181,6 +181,7 @@ namespace WindowPolice
             }
             Suspect.Add(new Suspect(String.Join("~", pointers)));
             Methods.PutActiveIntoTable(Table, Suspect);
+            this.Close();
         }
         private string FindLastCrime()
         {
