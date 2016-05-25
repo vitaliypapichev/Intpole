@@ -143,7 +143,7 @@ namespace WindowPolice
         }
         public static void FindInFileCrime(string Crime, ComboBox Combob)
         {
-            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\Crimes.ipd");
+            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\crimes.ipd");
             Char[] characters = { ';' };
             string result = filerow.ReadLine();
             string[] query;

@@ -12,31 +12,27 @@ namespace WindowPolice
 {
     public partial class Map : Form
     {
-        protected Suspect Susp;
+        protected Suspect suspected;
         public Map(Suspect Susp)
         {
             InitializeComponent();
-            this.Susp = Susp;
+            this.suspected = Susp;
             this.Paint += Map_Paint;
         }
 
         private void Map_Load(object sender, EventArgs e)
         {
-                this.BackgroundImage = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\mp" + Susp.SearchedIn + ".png");
-        }
-        private void Map_Activated(object sender, EventArgs e)
-        {
-
+            this.BackgroundImage = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\mp" + suspected.SearchedIn + ".png");
         }
 
         private void Map_Click(object sender, EventArgs e)
         {
-            Methods.FillStory(this.PointToClient(Cursor.Position), dataGridView1, Susp.History);
+            Methods.FillStory(this.PointToClient(Cursor.Position), dataGridView1, suspected.History);
         }
         private void Draw()
         {
             Graphics Graph = this.CreateGraphics();
-            Methods.RetrieveCities(Susp.SearchedIn).Draw(Graph, Susp.History);
+            Methods.RetrieveCities(suspected.SearchedIn).Draw(Graph, suspected.History);
         }
 
         private void Map_Paint(object sender, PaintEventArgs e)
@@ -46,7 +42,7 @@ namespace WindowPolice
 
         private void Map_MouseMove(object sender, MouseEventArgs e)
         {
-            Cursor.Current = Methods.SetPointerCursor(Susp.History, this.PointToClient(Cursor.Position));
+            Cursor.Current = Methods.SetPointerCursor(suspected.History, this.PointToClient(Cursor.Position));
         }
     }
 }

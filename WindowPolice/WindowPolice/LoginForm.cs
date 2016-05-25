@@ -18,31 +18,28 @@ namespace WindowPolice
         {
             InitializeComponent();
         }
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-        }
         private void private_validation()
         {
             string name = this.textBox1.Text;
             string pass = this.textBox2.Text;
-            string tempname = "";
-            string temppass = "";
+            string temporaryname = "";
+            string temporarypassword = "";
             StreamReader fs = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\staff.ipd");
-            string check = fs.ReadLine();
+            string comparer = fs.ReadLine();
             while(true)
             {
-                if (check == null) break;
-                int p = check.IndexOf(':');
-                tempname = check.Substring(0, p);
-                temppass = check.Substring(p+1, (check.Length-p)-1);
-                if (tempname == name && temppass == pass)
+                if (comparer == null) break;
+                int p = comparer.IndexOf(':');
+                temporaryname = comparer.Substring(0, p);
+                temporarypassword = comparer.Substring(p+1, (comparer.Length-p)-1);
+                if (temporaryname == name && temporarypassword == pass)
                 {
                     this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
                     Thread.Sleep(2000);
                     this.Visible = false;
                     return;
                 }
-                check = fs.ReadLine();
+                comparer = fs.ReadLine();
             }
            this.Validity1.SetIconPadding(this.textBox1, 6);
            this.Validity1.SetError(this.textBox1, "Access denied. Check validity of typed data or try again");

@@ -51,7 +51,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.Flag = new System.Windows.Forms.PictureBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -68,14 +67,12 @@
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.FlagNext = new System.Windows.Forms.PictureBox();
             this.label40 = new System.Windows.Forms.Label();
             this.InterpolAction = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Photo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Flag)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FlagNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.InterpolAction)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +100,6 @@
             this.label1.Size = new System.Drawing.Size(78, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Name :";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -251,7 +247,7 @@
             this.label16.AutoSize = true;
             this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(275, 344);
+            this.label16.Location = new System.Drawing.Point(225, 346);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(132, 24);
             this.label16.TabIndex = 17;
@@ -262,7 +258,7 @@
             this.label17.AutoSize = true;
             this.label17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.Location = new System.Drawing.Point(127, 344);
+            this.label17.Location = new System.Drawing.Point(77, 346);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(142, 24);
             this.label17.TabIndex = 16;
@@ -321,19 +317,6 @@
             this.label13.Size = new System.Drawing.Size(249, 28);
             this.label13.TabIndex = 13;
             this.label13.Text = "Detailed Information";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // Flag
-            // 
-            this.Flag.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Flag.ErrorImage = ((System.Drawing.Image)(resources.GetObject("Flag.ErrorImage")));
-            this.Flag.Image = ((System.Drawing.Image)(resources.GetObject("Flag.Image")));
-            this.Flag.Location = new System.Drawing.Point(77, 344);
-            this.Flag.Name = "Flag";
-            this.Flag.Size = new System.Drawing.Size(44, 24);
-            this.Flag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Flag.TabIndex = 22;
-            this.Flag.TabStop = false;
             // 
             // label22
             // 
@@ -366,7 +349,6 @@
             this.label24.Size = new System.Drawing.Size(54, 24);
             this.label24.TabIndex = 25;
             this.label24.Text = "Build";
-            this.label24.Click += new System.EventHandler(this.label24_Click);
             // 
             // label25
             // 
@@ -493,7 +475,7 @@
             this.label36.AutoSize = true;
             this.label36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label36.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label36.Location = new System.Drawing.Point(544, 374);
+            this.label36.Location = new System.Drawing.Point(490, 375);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(107, 24);
             this.label36.TabIndex = 37;
@@ -504,23 +486,11 @@
             this.label37.AutoSize = true;
             this.label37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label37.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label37.Location = new System.Drawing.Point(657, 374);
+            this.label37.Location = new System.Drawing.Point(603, 375);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(132, 24);
             this.label37.TabIndex = 38;
             this.label37.Text = "Was last seen";
-            // 
-            // FlagNext
-            // 
-            this.FlagNext.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlagNext.ErrorImage = ((System.Drawing.Image)(resources.GetObject("FlagNext.ErrorImage")));
-            this.FlagNext.Image = ((System.Drawing.Image)(resources.GetObject("FlagNext.Image")));
-            this.FlagNext.Location = new System.Drawing.Point(490, 374);
-            this.FlagNext.Name = "FlagNext";
-            this.FlagNext.Size = new System.Drawing.Size(44, 24);
-            this.FlagNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.FlagNext.TabIndex = 39;
-            this.FlagNext.TabStop = false;
             // 
             // label40
             // 
@@ -529,9 +499,9 @@
             this.label40.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label40.Location = new System.Drawing.Point(490, 412);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(107, 24);
+            this.label40.Size = new System.Drawing.Size(104, 24);
             this.label40.TabIndex = 42;
-            this.label40.Text = "Crimes list :";
+            this.label40.Text = "crimes list :";
             // 
             // InterpolAction
             // 
@@ -550,7 +520,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 25);
             this.button1.TabIndex = 44;
-            this.button1.Text = "Show Crimes";
+            this.button1.Text = "Show crimes";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -561,9 +531,20 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(160, 73);
             this.button2.TabIndex = 45;
-            this.button2.Text = "Show Action Story";
+            this.button2.Text = "Show Action story";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(118, 496);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(174, 50);
+            this.button3.TabIndex = 46;
+            this.button3.Text = "Edit";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Inform
             // 
@@ -572,11 +553,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1021, 567);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.InterpolAction);
             this.Controls.Add(this.label40);
-            this.Controls.Add(this.FlagNext);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.label35);
@@ -593,7 +574,6 @@
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
-            this.Controls.Add(this.Flag);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label18);
@@ -621,10 +601,7 @@
             this.Name = "Inform";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
-            this.Load += new System.EventHandler(this.Inform_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Photo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Flag)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FlagNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.InterpolAction)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -655,7 +632,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.PictureBox Flag;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
@@ -672,10 +648,10 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.PictureBox FlagNext;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.PictureBox InterpolAction;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

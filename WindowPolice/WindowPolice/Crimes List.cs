@@ -13,16 +13,16 @@ namespace WindowPolice
 {
     public partial class Crimes_List : Form
     {
-        private Suspect Susp;
+        private Suspect suspected;
         public Crimes_List(Suspect Susp)
         {
             InitializeComponent();
-            this.Susp = Susp;
+            this.suspected = Susp;
         }
 
         private void Crimes_List_Load(object sender, EventArgs e)
         {
-           foreach(KeyValuePair<Crime,DateTime> sample in Susp.Crimes)
+           foreach(KeyValuePair<Crime,DateTime> sample in suspected.Crimes)
            {
                dataGridView1.Rows.Add(sample.Key.ToString(), sample.Value.ToString("dd/MM/yyyy"));
            }

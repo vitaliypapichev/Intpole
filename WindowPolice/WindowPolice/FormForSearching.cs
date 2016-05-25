@@ -12,35 +12,18 @@ namespace WindowPolice
 {
     public partial class FormForSearching : Form
     {
-        private SuspectCollection Collect;
-        private DataGridView Table;
+        private SuspectCollection collection;
+        private DataGridView table;
         public FormForSearching(SuspectCollection Collect, DataGridView Table)
         {
             InitializeComponent();
-            this.Collect = Collect;
-            this.Table = Table;
+            this.collection = Collect;
+            this.table = Table;
         }
-
-        private void FormForSearching_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Methods.Find(Collect, Table, textBox1.Text);
+            Methods.Find(collection, table, textBox1.Text);
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (SuspectRadio.Checked)
@@ -69,9 +52,5 @@ namespace WindowPolice
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

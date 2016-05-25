@@ -12,40 +12,15 @@ namespace WindowPolice
 {
     public partial class Inform : Form
     {
-        private Suspect Susp;
+        private Suspect suspected;
         public Inform(Suspect Susp)
         {
             InitializeComponent();
-            this.Susp = Susp;
+            this.suspected = Susp;
         }
-
-        private void Inform_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Crimes_List CrimesList = new Crimes_List(Susp);
+            Crimes_List CrimesList = new Crimes_List(suspected);
             CrimesList.Location = new Point(this.Location.X + 30, this.Location.Y + this.Height - CrimesList.Height - 30);
             if(CrimesList.ShowDialog() != DialogResult.None)
             {
@@ -55,10 +30,19 @@ namespace WindowPolice
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Map Map = new Map(Susp);
+            Map Map = new Map(suspected);
             if(Map.ShowDialog() != DialogResult.None)
             {
+                
+            }
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            EditingForm Editor = new EditingForm(suspected);
+            if(Editor.ShowDialog() != DialogResult.None)
+            {
+                this.Close();
             }
         }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Map));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.CityDataGridView = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FactDataGrid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,10 +80,12 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1008, 682);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Map";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Map";
-            this.Activated += new System.EventHandler(this.Map_Activated);
             this.Load += new System.EventHandler(this.Map_Load);
             this.Click += new System.EventHandler(this.Map_Click);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Map_Paint);

@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Adding));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.name = new System.Windows.Forms.TextBox();
             this.surname = new System.Windows.Forms.TextBox();
@@ -292,16 +293,16 @@
             // DataGridCrimeBox
             // 
             this.DataGridCrimeBox.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DataGridCrimeBox.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DataGridCrimeBox.DefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridCrimeBox.HeaderText = "Crime";
             this.DataGridCrimeBox.Name = "DataGridCrimeBox";
             this.DataGridCrimeBox.ReadOnly = true;
             // 
             // DataGridGridDateCol
             // 
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.DataGridGridDateCol.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.DataGridGridDateCol.DefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridGridDateCol.HeaderText = "Date";
             this.DataGridGridDateCol.Name = "DataGridGridDateCol";
             this.DataGridGridDateCol.ReadOnly = true;
@@ -392,8 +393,8 @@
             // 
             // CityDataGridAdd
             // 
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CityDataGridAdd.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CityDataGridAdd.DefaultCellStyle = dataGridViewCellStyle3;
             this.CityDataGridAdd.HeaderText = "City";
             this.CityDataGridAdd.Name = "CityDataGridAdd";
             this.CityDataGridAdd.ReadOnly = true;
@@ -402,16 +403,16 @@
             // FactDataGridDD
             // 
             this.FactDataGridDD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.FactDataGridDD.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.FactDataGridDD.DefaultCellStyle = dataGridViewCellStyle4;
             this.FactDataGridDD.HeaderText = "Fact";
             this.FactDataGridDD.Name = "FactDataGridDD";
             this.FactDataGridDD.ReadOnly = true;
             // 
             // DateGridDate
             // 
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.DateGridDate.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.DateGridDate.DefaultCellStyle = dataGridViewCellStyle5;
             this.DateGridDate.HeaderText = "Date";
             this.DateGridDate.Name = "DateGridDate";
             this.DateGridDate.ReadOnly = true;
@@ -444,7 +445,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 20);
             this.label5.TabIndex = 48;
-            this.label5.Text = "Story";
+            this.label5.Text = "story";
             // 
             // comboBox3
             // 
@@ -673,7 +674,11 @@
             this.Controls.Add(this.surname);
             this.Controls.Add(this.name);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Adding";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adding";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

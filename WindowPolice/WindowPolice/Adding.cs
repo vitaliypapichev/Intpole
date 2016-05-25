@@ -15,23 +15,23 @@ namespace WindowPolice
 
     public partial class Adding : Form
     {
-        private List<string> Crimes;
-        private List<string> Story;
-        private DateTime CrimeDate;
-        private DateTime LastSeen;
+        private List<string> crimes;
+        private List<string> story;
+        private DateTime crimedate;
+        private DateTime lastseen;
         private string photo;
-        private SuspectCollection Suspect;
-        private DataGridView Table;
+        private SuspectCollection suspect;
+        private DataGridView table;
         public Adding(DataGridView Table, SuspectCollection Susp)
         {
             InitializeComponent();
-            Crimes = new List<string>();
-            Story = new List<string>();
+            crimes = new List<string>();
+            story = new List<string>();
             photo = "";
-            CrimeDate = new DateTime();
-            LastSeen = new DateTime();
-            Suspect = Susp;
-            this.Table = Table;
+            crimedate = new DateTime();
+            lastseen = new DateTime();
+            suspect = Susp;
+            this.table = Table;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -59,13 +59,24 @@ namespace WindowPolice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string CrimeType = comboBox1.Text + '>' +comboBox2.Text;
+            string CrimeType = '>' +comboBox2.Text;
+            if(comboBox1.Text.ToLower().IndexOf("crime") != -1)
+            {
+                CrimeType = "PropCrime" + CrimeType;
+            }
+            else
+            {
+                if(comboBox1.Text.ToLower().IndexOf("life") != -1)
+                    CrimeType = "LifeThreat" + CrimeType;
+                else
+                    CrimeType = comboBox1.Text + CrimeType;
+            }
             string date = dateTimePicker1.Value.ToString("dd/MM/yyyy");
             if (CrimeType == ">" || date == "")
                 return;
             CheckForDateCrime(dateTimePicker1.Value);
-            Crimes.Add(CrimeType + ':' + date);
-            dataGridView1.Rows.Add(CrimeType, date);
+            crimes.Add(CrimeType + ':' + date);
+            dataGridView1.Rows.Add(comboBox1.Text + '>' + comboBox2.Text, date);
         }
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -89,7 +100,6 @@ namespace WindowPolice
 
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
             dataGridView2.Rows.Clear();
             Methods.FindRegions(searchedin.Text, comboBox3);
         }
@@ -106,7 +116,7 @@ namespace WindowPolice
             }
             DataGridViewRow celll = this.dataGridView1.Rows[e.RowIndex];
             dataGridView1.Rows.Remove(celll);
-            Crimes.Remove(Crimes.ElementAt(Crimes.Count - 1 - e.RowIndex));
+            crimes.Remove(crimes.ElementAt(crimes.Count - 1 - e.RowIndex));
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -118,8 +128,8 @@ namespace WindowPolice
                 return;
             CheckForDateStory(dateTimePicker2.Value);
             dataGridView2.Rows.Add(city, story, date);
-            Story.Add(city + '#' + story + '=' + date);
-            Methods.PutActiveIntoTable(Table, Suspect);
+            this.story.Add(city + '#' + story + '=' + date);
+            Methods.PutActiveIntoTable(table, suspect);
         }
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -134,7 +144,7 @@ namespace WindowPolice
             }
             DataGridViewRow celll = this.dataGridView2.Rows[e.RowIndex];
             dataGridView2.Rows.Remove(celll);
-            Story.Remove(Story.ElementAt(Story.Count - 1 - e.RowIndex));
+            story.Remove(story.ElementAt(story.Count - 1 - e.RowIndex));
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -153,9 +163,9 @@ namespace WindowPolice
                     }
                 }
             }
-            if (Crimes.Count == 0 && Story.Count == 0)
+            if (crimes.Count == 0 && story.Count == 0)
                 return;
-            string[] pointers = { "name", "surname", "patro", "birth", "placeofb", "build", "hair", "eyes", "height", this.Crimes.Count.ToString(), FindLastCrime(), "wife", "children", FindLastPos(), CrimesToString(), "searchedin", "status", this.photo, StoryToString() };
+            string[] pointers = { "name", "surname", "patro", "birth", "placeofb", "build", "hair", "eyes", "height", this.crimes.Count.ToString(), FindLastCrime(), "wife", "children", FindLastPos(), CrimesToString(), "searchedin", "status", this.photo, StoryToString() };
             for (int i = 0; i < pointers.Length; i++ )
             {
                 for(int j = 0; j < this.Controls.Count; j++)
@@ -163,14 +173,7 @@ namespace WindowPolice
                     if(this.Controls[j].Name.Equals(pointers[i]) && this.Controls[j].GetType().Name.ToLower().Equals("textbox"))
                         pointers[i] = this.Controls[j].Text;
                     if (this.Controls[j].Name.Equals(pointers[i]) && this.Controls[j].GetType().Name.ToLower().Equals("combobox"))
-                    {
-                        if (this.Controls[j].Text.ToLower().Equals("property crime"))
-                        {
-                            pointers[i] = "PropCrime";
-                            continue;
-                        }
                         pointers[i] = this.Controls[j].Text.Trim();
-                    }
                     if (this.Controls[j].Name.Equals(pointers[i]) && this.Controls[j].GetType().Name.ToLower().Equals("checkbox"))
                         pointers[i] = ((CheckBox)this.Controls[j]).Checked.ToString();
                     if (this.Controls[j].Name.Equals(pointers[i]) && this.Controls[j].GetType().Name.ToLower().Equals("monthcalendar"))
@@ -179,24 +182,24 @@ namespace WindowPolice
                         pointers[i] = ((NumericUpDown)this.Controls[j]).Value.ToString();
                 }
             }
-            Suspect.Add(new Suspect(String.Join("~", pointers)));
-            Methods.PutActiveIntoTable(Table, Suspect);
+            suspect.Add(new Suspect(String.Join("~", pointers)));
+            Methods.PutActiveIntoTable(table, suspect);
             this.Close();
         }
         private string FindLastCrime()
         {
-            foreach(string comparer in Crimes)
+            foreach(string comparer in crimes)
             {
-                if (comparer.IndexOf(CrimeDate.ToString("dd/MM/yyyy")) != -1)
-                    return comparer.Substring(0, comparer.IndexOf(':'));
+                if (comparer.IndexOf(crimedate.ToString("dd/MM/yyyy")) != -1)
+                return comparer.Substring(0, comparer.IndexOf(':'));
             }
-            return CrimeDate.ToString("dd/MM/yyyy");
+            return crimedate.ToString("dd/MM/yyyy");
         }
         private string CrimesToString()
         {
             string result = "";
             bool point = false;
-            foreach(string comparer in Crimes)
+            foreach(string comparer in crimes)
             {
                 if(point)
                 result += ", ";
@@ -207,23 +210,23 @@ namespace WindowPolice
         }
         private void CheckForDateCrime(DateTime time1)
         {
-            if (time1.Year > CrimeDate.Year)
+            if (time1.Year > crimedate.Year)
             {
-                CrimeDate = time1;
+                crimedate = time1;
                 return;
             }
-            if (time1.Year == CrimeDate.Year)
+            if (time1.Year == crimedate.Year)
             {
-                if (time1.Month > CrimeDate.Month)
+                if (time1.Month > crimedate.Month)
                 {
-                    CrimeDate = time1;
+                    crimedate = time1;
                     return;
                 }
-                if (time1.Month == CrimeDate.Month)
+                if (time1.Month == crimedate.Month)
                 {
-                    if (time1.Day > CrimeDate.Day)
+                    if (time1.Day > crimedate.Day)
                     {
-                        CrimeDate = time1;
+                        crimedate = time1;
                         return;
                     }
                     else
@@ -235,23 +238,23 @@ namespace WindowPolice
         }
         private void CheckForDateStory(DateTime time1)
         {
-            if (time1.Year > LastSeen.Year)
+            if (time1.Year > lastseen.Year)
             {
-                LastSeen = time1;
+                lastseen = time1;
                 return;
             }
-            if (time1.Year == LastSeen.Year)
+            if (time1.Year == lastseen.Year)
             {
-                if (time1.Month > LastSeen.Month)
+                if (time1.Month > lastseen.Month)
                 {
-                    LastSeen = time1;
+                    lastseen = time1;
                     return;
                 }
-                if (time1.Month == LastSeen.Month)
+                if (time1.Month == lastseen.Month)
                 {
-                    if (time1.Day > LastSeen.Day)
+                    if (time1.Day > lastseen.Day)
                     {
-                        LastSeen = time1;
+                        lastseen = time1;
                         return;
                     }
                     else
@@ -265,7 +268,7 @@ namespace WindowPolice
         {
             string result = "";
             bool point = false;
-            foreach (string comparer in Story)
+            foreach (string comparer in story)
             {
                 if (point)
                     result += ';';
@@ -276,12 +279,12 @@ namespace WindowPolice
         }
         private string FindLastPos()
         {
-            foreach (string comparer in Story)
+            foreach (string comparer in story)
             {
-                if (comparer.IndexOf(LastSeen.ToString("dd/MM/yyyy")) != -1)
+                if (comparer.IndexOf(lastseen.ToString("dd/MM/yyyy")) != -1)
                     return comparer.Substring(0, comparer.IndexOf('#'));
             }
-            return LastSeen.ToString("dd/MM/yyyy");
+            return lastseen.ToString("dd/MM/yyyy");
         }
         private void textBox1_Enter(object sender, EventArgs e)
         {

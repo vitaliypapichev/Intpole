@@ -60,14 +60,12 @@
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
             this.mainToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.mainToolStripMenuItem.Text = "Main Archive";
-            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // archiveToolStripMenuItem
             // 
@@ -181,7 +179,7 @@
             this.SuspTable.Name = "SuspTable";
             this.SuspTable.Size = new System.Drawing.Size(145, 24);
             this.SuspTable.TabIndex = 1;
-            this.SuspTable.Text = "List of Suspects";
+            this.SuspTable.Text = "List of suspects";
             this.SuspTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1

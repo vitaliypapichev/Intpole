@@ -41,9 +41,10 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(31, 275);
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(12, 275);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(94, 38);
             this.button1.TabIndex = 0;
             this.button1.Text = "Find";
             this.button1.UseVisualStyleBackColor = true;
@@ -52,9 +53,10 @@
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(153, 275);
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(143, 275);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(96, 38);
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
@@ -66,7 +68,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(242, 24);
             this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // SuspectRadio
             // 
@@ -91,10 +92,10 @@
             this.GroupRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.GroupRadio.Location = new System.Drawing.Point(12, 180);
             this.GroupRadio.Name = "GroupRadio";
-            this.GroupRadio.Size = new System.Drawing.Size(137, 20);
+            this.GroupRadio.Size = new System.Drawing.Size(155, 20);
             this.GroupRadio.TabIndex = 4;
             this.GroupRadio.TabStop = true;
-            this.GroupRadio.Text = "Find a crime group";
+            this.GroupRadio.Text = "Find by a crime group";
             this.GroupRadio.UseVisualStyleBackColor = false;
             this.GroupRadio.CheckedChanged += new System.EventHandler(this.GroupRadio_CheckedChanged);
             // 
@@ -116,10 +117,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(260, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(396, 380);
+            this.label1.Size = new System.Drawing.Size(392, 380);
             this.label1.TabIndex = 6;
             this.label1.Text = resources.GetString("label1.Text");
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FormForSearching
             // 
@@ -129,7 +129,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(654, 391);
-            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.GroupRadio);
@@ -141,10 +140,10 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormForSearching";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Searching";
-            this.Load += new System.EventHandler(this.FormForSearching_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

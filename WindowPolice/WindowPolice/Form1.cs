@@ -13,46 +13,31 @@ namespace WindowPolice
 {
     public partial class Interpole : Form
     {
-        private SuspectCollection Suspects;
+        private SuspectCollection suspects;
         public Interpole() : base()
         {
             InitializeComponent();
-            Suspects = new SuspectCollection();
+            suspects = new SuspectCollection();
         }
         private void Interpole_Load(object sender, EventArgs e)
         {
             LoginForm login = new LoginForm();
             if(login.ShowDialog() != DialogResult.None)
             {
-                Suspects.FillSuspectCollection();
+                suspects.FillSuspectCollection();
                 SuspectTable.Rows.Clear();
-                Methods.PutActiveIntoTable(SuspectTable, Suspects);
+                Methods.PutActiveIntoTable(SuspectTable, suspects);
             }
-        }
-
-        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormForSearching a = new FormForSearching(this.Suspects, SuspectTable);
-            a.Location = this.Location;
-            if(a.ShowDialog() == DialogResult.OK)
+            FormForSearching search = new FormForSearching(this.suspects, SuspectTable);
+            search.Location = this.Location;
+            if(search.ShowDialog() == DialogResult.OK)
             {
-                a.Close();
+                search.Close();
             }
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void suspectBindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Interpole_SizeChanged(object sender, EventArgs e)
@@ -77,43 +62,29 @@ namespace WindowPolice
             {
                 return;
             }
-            DataGridViewRow celll = this.SuspectTable.Rows[e.RowIndex];
-            Inform form = new Inform(Suspects.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)));
-            Dictionary<string, string> Dict = Suspects.ElementAt(Convert.ToInt32(celll.Cells[celll.Cells.Count - 1].Value)).ReturnData();
+            DataGridViewRow cells = this.SuspectTable.Rows[e.RowIndex];
+            Inform form = new Inform(suspects.ElementAt(Convert.ToInt32(cells.Cells[cells.Cells.Count - 1].Value)));
+            Dictionary<string, string> Dict = suspects.ElementAt(Convert.ToInt32(cells.Cells[cells.Cells.Count - 1].Value)).ReturnData();
             for (int i = 0; i < form.Controls.Count; i++)
             {
-                foreach(KeyValuePair<string,string> KValue in Dict)
+                foreach(KeyValuePair<string,string> comparer in Dict)
                 {
-                    if (form.Controls[i].Text.Equals(KValue.Key))
-                        form.Controls[i].Text = KValue.Value;
-                    if (form.Controls[i].Name.Equals(KValue.Key) && form.Controls[i].Name.Equals("Photo"))
+                    if (form.Controls[i].Text.Equals(comparer.Key))
+                        form.Controls[i].Text = comparer.Value;
+                    if (form.Controls[i].Name.Equals(comparer.Key) && form.Controls[i].Name.Equals("Photo"))
                     {
                         PictureBox box = new PictureBox();
                         box = (PictureBox)form.Controls[i];
-                        Bitmap Img = new Bitmap(KValue.Value);
+                        Bitmap Img = new Bitmap(comparer.Value);
                         box.Image = Img;
                         box.SizeMode = PictureBoxSizeMode.StretchImage;
                     }
-                    if(form.Controls[i].Name.Equals("Flag") && KValue.Key.Equals("Place of birth"))
-                    {
-                        string country = KValue.Value.Substring(KValue.Value.IndexOf(',') + 2);
-                        PictureBox box = new PictureBox();
-                        box = (PictureBox)form.Controls[i];
-                        Methods.SetFlag(country, box);
-                    }
-                    if (form.Controls[i].Name.Equals("FlagNext") && KValue.Key.Equals("Was last seen"))
-                    {
-                        string country = KValue.Value.Substring(KValue.Value.IndexOf(',') + 2);
-                        PictureBox box = new PictureBox();
-                        box = (PictureBox)form.Controls[i];
-                        Methods.SetFlag(country, box);
-                    }
-                    if (KValue.Key.Equals("Status") && form.Controls[i].Name.Equals("InterpolAction"))
+                    if (comparer.Key.Equals("Status") && form.Controls[i].Name.Equals("InterpolAction"))
                     {
                         PictureBox box = new PictureBox();
                         box = (PictureBox)form.Controls[i];
                         Bitmap Img;
-                        if(KValue.Value == "Arrested")
+                        if(comparer.Value == "Arrested")
                         {
                             Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\busted.png");
                             box.SizeMode = PictureBoxSizeMode.Zoom;
@@ -127,12 +98,15 @@ namespace WindowPolice
                     }
                 }
             }
-            form.Show();
+            if(form.ShowDialog() != DialogResult.None)
+            {
+
+            }
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Adding AddForm = new Adding(SuspectTable,Suspects);
+            Adding AddForm = new Adding(SuspectTable,suspects);
             AddForm.Show();
         }
 
@@ -140,7 +114,7 @@ namespace WindowPolice
         {
             FileStream file = new FileStream(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\suspects.ipd", FileMode.Create);
             StreamWriter writer = new StreamWriter(file);
-            foreach(Suspect Susp in Suspects)
+            foreach(Suspect Susp in suspects)
             {
                  writer.WriteLine(Susp.ToString());
             }

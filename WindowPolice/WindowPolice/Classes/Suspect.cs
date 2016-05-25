@@ -14,11 +14,11 @@ namespace WindowPolice
         protected HumanPhysData PhysData;
         public int CrimeNumber { get; protected set; }
         public Dictionary<Crime, DateTime> Crimes;
-        public bool IfWife { get; protected set; }
-        public bool IfChildren { get; protected set; }
+        public bool IfWife { get; set; }
+        public bool IfChildren { get; set; }
         public string LastSeen { get; protected set; }
         public Crime LastCrime { get; protected set; }
-        public string Status { get; protected set; }
+        public string Status { get; set; }
         public string PicLoc;
         public string SearchedIn;
         public StoryCollection History;
