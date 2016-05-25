@@ -28,9 +28,15 @@ namespace WindowPolice
         public void Draw(Graphics Graphic, StoryCollection Collection)
         {
             GraphicsPath Path = new GraphicsPath();
-            SolidBrush kek = new SolidBrush(Color.Blue);
+            SolidBrush brush = new SolidBrush(Color.Blue);
             Point pos1 = new Point();
             Point pos2 = new Point();
+            bool todelete = false;
+            if(Collection.Count == 1)
+            {
+                Collection.Add(Collection.ElementAt(0));
+                todelete = true;
+            }
             for (int i = 0; i < Collection.Count - 1; i++ )
             {
                 pos1 = new Point();
@@ -57,12 +63,13 @@ namespace WindowPolice
                     continue;
                 Path.AddLine(pos1, pos2);
                 Path.AddEllipse(pos1.X - 5, pos1.Y - 5, 10, 10);
-                Graphic.FillEllipse(kek, pos1.X - 5, pos1.Y - 5, 10, 10);
+                Graphic.FillEllipse(brush, pos1.X - 5, pos1.Y - 5, 10, 10);
             }
             Collection.ElementAt(Collection.Count-1).Location = pos2;
             Path.AddEllipse(pos2.X - 5, pos2.Y - 5, 10, 10);
-            Graphic.FillEllipse(kek, pos2.X - 5, pos2.Y - 5, 10, 10);
+            Graphic.FillEllipse(brush, pos2.X - 5, pos2.Y - 5, 10, 10);
             Graphic.DrawPath(new Pen(Color.Black, 2), Path);
+            Collection.Remove(Collection.ElementAt(Collection.Count - 1));
         }
     }
 }

@@ -22,35 +22,22 @@ namespace WindowPolice
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Methods.Find(collection, table, textBox1.Text);
+            Find(collection, table, textBox1.Text);
         }
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void Find(SuspectCollection Collect, DataGridView Table, string Text)
         {
-            if (SuspectRadio.Checked)
+            Char[] splitters = { ';' };
+            string[] findparams = Text.Split(splitters);
+            Table.Rows.Clear();
+            for (int i = 0; i < Collect.Count; i++)
             {
-                textBox1.Enabled = true;
-                textBox1.BackColor = Color.White;
-            }
-            else
-            {
-                textBox1.Enabled = false;
-                textBox1.BackColor = Color.LightGray;
-
-            }
-        }
-        private void GroupRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            if (GroupRadio.Checked) 
-            {
-                textBox2.Enabled = true;
-                textBox2.BackColor = Color.White;
-            }
-            else
-            {
-                textBox2.Enabled = false;
-                textBox2.BackColor = Color.LightGray;
+                if (Collect.ElementAt(i).MatchesQuery(findparams))
+                {
+                    object[] array = Collect.ElementAt(i).HumanDataToArrayForDataBase();
+                    array[array.Length - 1] = i;
+                    Table.Rows.Add(array);
+                }
             }
         }
-
     }
 }

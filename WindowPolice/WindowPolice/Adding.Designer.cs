@@ -234,6 +234,7 @@
             this.birth.Location = new System.Drawing.Point(436, 94);
             this.birth.Name = "birth";
             this.birth.TabIndex = 33;
+            this.birth.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.birth_DateChanged);
             // 
             // height
             // 
@@ -374,6 +375,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
             this.dateTimePicker1.TabIndex = 43;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dataGridView2
             // 
@@ -425,6 +427,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(188, 26);
             this.dateTimePicker2.TabIndex = 50;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // button2
             // 
@@ -443,7 +446,7 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(423, 351);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.Size = new System.Drawing.Size(43, 20);
             this.label5.TabIndex = 48;
             this.label5.Text = "story";
             // 

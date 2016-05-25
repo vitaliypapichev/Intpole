@@ -164,7 +164,10 @@ namespace WindowPolice
                 }
             }
             if (crimes.Count == 0 && story.Count == 0)
+            {
+                MessageBox.Show("Suspect must have at least one crime and one fact");
                 return;
+            }
             string[] pointers = { "name", "surname", "patro", "birth", "placeofb", "build", "hair", "eyes", "height", this.crimes.Count.ToString(), FindLastCrime(), "wife", "children", FindLastPos(), CrimesToString(), "searchedin", "status", this.photo, StoryToString() };
             for (int i = 0; i < pointers.Length; i++ )
             {
@@ -319,6 +322,34 @@ namespace WindowPolice
         private void textBox5_Enter(object sender, EventArgs e)
         {
             placeofb.BackColor = Color.White;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            if(dateTimePicker1.Value.Year > DateTime.Today.Year || ((dateTimePicker1.Value.Year == DateTime.Today.Year) && (dateTimePicker1.Value.Month > DateTime.Today.Month)) || (((dateTimePicker1.Value.Year == DateTime.Today.Year) && (dateTimePicker1.Value.Month == DateTime.Today.Month) && (dateTimePicker1.Value.Day > DateTime.Today.Day))))
+            {
+                MessageBox.Show("Hm, program found you predicting the future. Date is incorrect");
+                dateTimePicker1.Value = DateTime.Today;
+            }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimePicker2.Value.Year > DateTime.Today.Year || ((dateTimePicker2.Value.Year == DateTime.Today.Year) && (dateTimePicker2.Value.Month > DateTime.Today.Month)) || (((dateTimePicker2.Value.Year == DateTime.Today.Year) && (dateTimePicker2.Value.Month == DateTime.Today.Month) && (dateTimePicker2.Value.Day > DateTime.Today.Day))))
+            {
+                MessageBox.Show("Hm, program found you predicting the future. Date is incorrect");
+                dateTimePicker2.Value = DateTime.Today;
+            }
+        }
+
+        private void birth_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            int Years = (birth.SelectionRange.Start.DayOfYear - DateTime.Now.DayOfYear) >= 0 ? DateTime.Now.Year - birth.SelectionRange.Start.Year - 1 : DateTime.Now.Year - birth.SelectionRange.Start.Year;
+            if(Years < 18)
+            {
+                MessageBox.Show("Suspect is too young to be in International Searching. Try again");
+                birth.SelectionRange.Start = new DateTime(DateTime.Now.Year - 18, DateTime.Now.Month, DateTime.Now.Day);
+            }
         }
     }
 }

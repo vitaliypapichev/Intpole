@@ -100,21 +100,6 @@ namespace WindowPolice
             }
             return CountryName;
         }
-        public static void Find(SuspectCollection Collect, DataGridView Table, string Text)
-        {
-            Char[] splitters = { ';' };
-            string[] findparams = Text.Split(splitters);
-            Table.Rows.Clear();
-            for (int i = 0; i < Collect.Count; i++)
-            {
-                if (Collect.ElementAt(i).MatchesQuery(findparams))
-                {
-                    object[] array = Collect.ElementAt(i).HumanDataToArrayForDataBase();
-                    array[array.Length - 1] = i;
-                    Table.Rows.Add(array);
-                }
-            }
-        }
         public static void FindRegions(string County, ComboBox Combob)
         {
             Combob.Items.Clear();

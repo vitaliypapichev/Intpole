@@ -124,8 +124,8 @@ PropCrime:Robbery and else;
 
 So here are keys for searching :
 Name; Sname; Patro; Years; SearchedIn; 
-HasWife, HasChild(true,false); LastCrime;
-WasSeen; Build; Hair; Eyes; Height; Birth(dd.mm.yyyy)
+HasWife, HasChild(true,false); LastCrime(CrimeName&gt;Speciality);
+WasSeen(Region&gt;City); Build; Hair; Eyes; Height; Birth(dd.mm.yyyy)
 Keys for crimes :
 PropCrime:Robbering or Theft or Burglary 
 LifeThreat:Murder or Killing
