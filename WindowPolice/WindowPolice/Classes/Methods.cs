@@ -50,20 +50,6 @@ namespace WindowPolice
             Console.WriteLine(new DateTime(Convert.ToInt32(Strings[2]), Convert.ToInt32(Strings[1]), Convert.ToInt32(Strings[0])));
             return new DateTime(Convert.ToInt32(Strings[2]), Convert.ToInt32(Strings[1]), Convert.ToInt32(Strings[0]));
         }
-        static public void SetFlag(string country, PictureBox box)
-        {
-             Bitmap Img;
-             try
-             {
-                Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\\" + country + ".png");
-             }
-             catch (System.Exception exe)
-             {
-                Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png");
-             }
-             box.Image = Img;
-             box.SizeMode = PictureBoxSizeMode.StretchImage;
-        }
         static public string CrimesToString(List<string> Crimes)
         {
             string result = "";

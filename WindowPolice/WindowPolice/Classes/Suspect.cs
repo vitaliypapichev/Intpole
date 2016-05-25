@@ -50,42 +50,6 @@ namespace WindowPolice
             this.PicLoc = alldata[17];
             History.FillCollection(alldata[18]);
         }
-        public void AddCrime(Crime Crime, string PlaceOfCrime, DateTime Date)
-        {
-            this.LastSeen = PlaceOfCrime;
-            this.Crimes.Add(Crime, Date);
-            this.LastCrime = Crime;
-            CrimeNumber++;
-        }
-        public void AddCrime(Crime Crime, DateTime Date)
-        {
-            this.Crimes.Add(Crime, Date);
-            this.LastCrime = Crime;
-            CrimeNumber++;
-        }
-        public void WasSeen(string PlaceName)
-        {
-            this.LastSeen = PlaceName;
-        }
-        public void HasWife(bool HasHe)
-        {
-            this.IfWife = HasHe;
-        }
-        public void HasChildren(bool HasHe)
-        {
-            this.IfChildren = HasHe;
-        }
-        static public List<string> CreateList(string Data)
-        {
-            Char[] Characters = new Char[] { ',', ' ' };
-            string[] Strings = Data.Split(Characters);
-            List<string> result = new List<string>();
-            foreach (string a in Strings)
-            {
-                result.Add(a);
-            }
-            return result;
-        }
         public override string ToString()
         {
             return PhysData.ToString() + "~" + this.CrimeNumber.ToString() + "~" + this.LastCrime.ToString() + "~" + IfWife.ToString() + "~" + IfChildren.ToString() + "~" + this.LastSeen + "~" + CrimeString() +"~" + this.SearchedIn + "~" + this.Status + "~" + this.PicLoc + "~" + History.ToString();

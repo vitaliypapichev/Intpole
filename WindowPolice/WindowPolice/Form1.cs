@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace WindowPolice
 {
@@ -27,9 +28,9 @@ namespace WindowPolice
                 suspects.FillSuspectCollection();
                 SuspectTable.Rows.Clear();
                 Methods.PutActiveIntoTable(SuspectTable, suspects);
+                FindStatistic("All Time");
             }
         }
-
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormForSearching search = new FormForSearching(this.suspects, SuspectTable);
@@ -39,7 +40,6 @@ namespace WindowPolice
                 search.Close();
             }
         }
-
         private void Interpole_SizeChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < SuspectTable.Columns.Count; i++)
@@ -51,7 +51,6 @@ namespace WindowPolice
             panel1.Width = SuspectTable.Width + 7;
             panel1.Height = SuspectTable.Height + 7;
         }
-
         private void SuspectTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -103,13 +102,11 @@ namespace WindowPolice
 
             }
         }
-
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Adding AddForm = new Adding(SuspectTable,suspects);
             AddForm.Show();
         }
-
         private void Interpole_FormClosing(object sender, FormClosingEventArgs e)
         {
             FileStream file = new FileStream(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\suspects.ipd", FileMode.Create);
@@ -120,6 +117,65 @@ namespace WindowPolice
             }
             writer.Close();
             file.Close();
+        }
+        private void FindStatistic(string Time)
+        {
+            string[] crimes = { "PropertyCrime", "LifeThreat", "Hacking", "Terrorism", "Hijacking", "Corruption", "Drugs" };
+            int[] count = new int[crimes.Length];
+            for (int i = 0; i < crimes.Length; i++)
+            {
+                foreach(Suspect compr in suspects)
+                {
+                foreach(KeyValuePair<Crime,DateTime> comparer in compr.Crimes)
+                {
+                    if (Time.Equals("Today"))
+                    {
+                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && DateTime.Today.ToString("dd/MM/yyyy").Equals(comparer.Value.ToString("dd/MM/yyyy")))
+                        {
+                        count[i] = count[i] + 1;
+                        }
+                    }
+                    if(Time.Equals("Week"))
+                    {
+                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Day >= DateTime.Today.Day - 7 && comparer.Value.Year == DateTime.Today.Year && comparer.Value.Month == DateTime.Today.Month)
+                        {
+                            count[i] = count[i] + 1;
+                        }
+                    }
+                    if(Time.Equals("Month"))
+                    {
+                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Year == DateTime.Today.Year && comparer.Value.Month == DateTime.Today.Month)
+                        {
+                            count[i] = count[i] + 1;
+                        }
+                    }
+                    if(Time.Equals("Year"))
+                    {
+                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Year == DateTime.Today.Year)
+                        {
+                            count[i] = count[i] + 1;
+                        }
+                    }
+                    if(Time.Equals("All Time"))
+                    {
+                        if(comparer.Key.GetTypeName().Equals(crimes[i]))
+                        {
+                            count[i] = count[i] + 1;
+                        }
+                    }
+                }
+                }
+            }
+            for(int i = 0; i < count.Length; i++)
+            {
+                this.chart1.Series["Crimes"].Points.AddXY(crimes[i], count[i]);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.chart1.Series[0].Points.Clear();
+            FindStatistic(comboBox1.Text);
         }
 
     }

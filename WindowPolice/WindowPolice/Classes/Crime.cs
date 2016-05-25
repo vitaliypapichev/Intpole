@@ -21,6 +21,10 @@ namespace WindowPolice
         {
             return this.GetType().Name + ">" + this.specialization;
         }
+        public virtual string GetTypeName()
+        {
+            return this.GetType().Name;
+        }
         public virtual bool Equals(Crime Another)
         {
             return this.specialization.ToLower().Equals(Another.specialization.ToLower());
@@ -37,6 +41,10 @@ namespace WindowPolice
         public override string ToString()
         {
             return "PropCrime>" + this.specialization;
+        }
+        public override string GetTypeName()
+        {
+            return base.GetTypeName();
         }
         public override bool Equals(Crime Another)
         {
@@ -55,6 +63,10 @@ namespace WindowPolice
         {
             return "LifeThreat>" + this.specialization;
         }
+        public override string GetTypeName()
+        {
+            return base.GetTypeName();
+        }
         public override bool Equals(Crime Another)
         {
             return base.Equals(Another);
@@ -72,6 +84,10 @@ namespace WindowPolice
         {
             return "Hacking>" + this.specialization;
         }
+        public override string GetTypeName()
+        {
+            return base.GetTypeName();
+        }
         public override bool Equals(Crime Another)
         {
             return base.Equals(Another);
@@ -88,6 +104,10 @@ namespace WindowPolice
         public override string ToString()
         {
             return "Terrorism>" + this.specialization;
+        }
+        public override string GetTypeName()
+        {
+            return base.GetTypeName();
         }
         public override bool Equals(Crime Another)
         {
@@ -122,6 +142,10 @@ namespace WindowPolice
         {
             return "Hijacking>" + this.specialization;
         }
+        public override string GetTypeName()
+        {
+            return base.GetTypeName();
+        }
         public override bool Equals(Crime Another)
         {
             return base.Equals(Another);
@@ -139,6 +163,10 @@ namespace WindowPolice
         {
             return "Corruption>" + this.specialization;
         }
+        public override string GetTypeName()
+        {
+            return base.GetTypeName();
+        }
         public override bool Equals(Crime Another)
         {
             return base.Equals(Another);
@@ -155,6 +183,10 @@ namespace WindowPolice
         public override string ToString()
         {
             return "Drugs>" + this.specialization;
+        }
+        public override string GetTypeName()
+        {
+            return base.GetTypeName();
         }
         public override bool Equals(Crime Another)
         {
