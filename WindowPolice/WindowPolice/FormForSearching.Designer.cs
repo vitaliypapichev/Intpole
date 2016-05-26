@@ -39,7 +39,7 @@
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 259);
+            this.button1.Location = new System.Drawing.Point(12, 278);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 38);
             this.button1.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(158, 259);
+            this.button2.Location = new System.Drawing.Point(158, 278);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 38);
             this.button2.TabIndex = 1;
@@ -61,7 +61,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(12, 132);
+            this.textBox1.Location = new System.Drawing.Point(12, 151);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(242, 31);
             this.textBox1.TabIndex = 3;
@@ -71,9 +71,9 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Window;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(260, 9);
+            this.label1.Location = new System.Drawing.Point(270, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(482, 380);
+            this.label1.Size = new System.Drawing.Size(392, 440);
             this.label1.TabIndex = 6;
             this.label1.Text = resources.GetString("label1.Text");
             // 
@@ -84,7 +84,7 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.CancelButton = this.button2;
-            this.ClientSize = new System.Drawing.Size(742, 391);
+            this.ClientSize = new System.Drawing.Size(667, 451);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);

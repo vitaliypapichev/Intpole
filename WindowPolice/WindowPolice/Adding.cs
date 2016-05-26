@@ -27,7 +27,7 @@ namespace WindowPolice
             InitializeComponent();
             crimes = new List<string>();
             story = new List<string>();
-            photo = "";
+            photo = @"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\Question-mark.png";
             crimeDate = new DateTime();
             lastSeen = new DateTime();
             suspect = Susp;
@@ -43,7 +43,7 @@ namespace WindowPolice
             }
             else
             {
-                this.photo = "-";
+                this.photo = @"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\Question-mark.png";
             }
         }
 
@@ -163,6 +163,8 @@ namespace WindowPolice
                 MessageBox.Show("Suspect must have at least one crime and one fact");
                 return;
             }
+            if (checkYears())
+                return;
             string[] pointers = { "name", "surname", "patro", "birth", "placeofb", "build", "hair", "eyes", "height", this.crimes.Count.ToString(), findLastCrime(), "wife", "children", findLastPos(), crimesToString(), "searchedin", "status", this.photo, storyToString() };
             for (int i = 0; i < pointers.Length; i++ )
             {
@@ -339,12 +341,18 @@ namespace WindowPolice
 
         private void birth_DateSelected(object sender, DateRangeEventArgs e)
         {
+            if (checkYears())
+                return;
+        }
+        private bool checkYears()
+        {
             int Years = (birth.SelectionRange.Start.DayOfYear - DateTime.Now.DayOfYear) >= 0 ? DateTime.Now.Year - birth.SelectionRange.Start.Year - 1 : DateTime.Now.Year - birth.SelectionRange.Start.Year;
             if (Years < 18)
             {
                 MessageBox.Show("Suspect is too young to be in International Searching. Try again");
-                birth.SelectionRange.Start = new DateTime(DateTime.Now.Year - 18, DateTime.Now.Month, DateTime.Now.Day);
+                return true;
             }
+            return false;
         }
     }
 }

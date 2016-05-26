@@ -15,21 +15,20 @@ namespace WindowPolice
     public partial class Interpole : Form
     {
         private SuspectCollection suspects;
-        public Interpole() : base()
+        private SuspectCollection wholeCollection;
+        private string country;
+        public Interpole(SuspectCollection Suspects, SuspectCollection WholeCollection, string Country)
         {
             InitializeComponent();
-            suspects = new SuspectCollection();
+            suspects = Suspects;
+            wholeCollection = WholeCollection;
+            country = Country;
         }
         private void Interpole_Load(object sender, EventArgs e)
         {
-            LoginForm login = new LoginForm();
-            if(login.ShowDialog() != DialogResult.None)
-            {
-                suspects.FillSuspectCollection();
-                SuspectTable.Rows.Clear();
-                Methods.PutActiveIntoTable(SuspectTable, suspects);
-                FindStatistic("All Time");
-            }
+            SuspectTable.Rows.Clear();
+            Methods.PutActiveIntoTable(SuspectTable, suspects);
+            FindStatistic("All Time");
         }
         private void archiveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -105,19 +104,15 @@ namespace WindowPolice
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Adding AddForm = new Adding(SuspectTable,suspects);
-            AddForm.Show();
-        }
-        private void Interpole_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            FileStream file = new FileStream(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\suspects.ipd", FileMode.Create);
-            StreamWriter writer = new StreamWriter(file);
-            foreach(Suspect Susp in suspects)
+            Adding AddForm = new Adding(SuspectTable, wholeCollection);
+            if(AddForm.ShowDialog() != DialogResult.None)
             {
-                 writer.WriteLine(Susp.ToString());
+                loadList();
+                Methods.PutActiveIntoTable(SuspectTable, suspects);
+                comboBox1.Text = "All Time";
+                this.chart1.Series[0].Points.Clear();
+                FindStatistic("All Time");
             }
-            writer.Close();
-            file.Close();
         }
         private void FindStatistic(string Time)
         {
@@ -173,5 +168,33 @@ namespace WindowPolice
             Methods.PutActiveIntoTable(SuspectTable, suspects);
         }
 
+        private void Interpole_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool exit = false;
+            foreach(Suspect suspected in suspects)
+            {
+                foreach(Suspect allsuspcets in wholeCollection)
+                {
+                    if (allsuspcets.PicLoc == suspected.PicLoc && allsuspcets.LastSeen == suspected.LastSeen && allsuspcets.LastCrime.ToString() == allsuspcets.LastCrime.ToString())
+                    {
+                        exit = true;
+                        break;
+                    }
+                }
+                if(!exit)
+                wholeCollection.Add(suspected);
+                exit = false;
+            }
+        }
+        private void loadList()
+        {
+            SuspectCollection ToLoad = new SuspectCollection();
+            foreach (Suspect suspected in wholeCollection)
+            {
+                if (suspected.SearchedIn.Equals(country))
+                    ToLoad.Add(suspected);
+            }
+            suspects = ToLoad;
+        }
     }
 }
