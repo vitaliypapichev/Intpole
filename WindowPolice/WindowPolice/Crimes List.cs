@@ -22,7 +22,7 @@ namespace WindowPolice
 
         private void Crimes_List_Load(object sender, EventArgs e)
         {
-           foreach(KeyValuePair<Crime,DateTime> sample in suspected.Crimes)
+           foreach (KeyValuePair<Crime, DateTime> sample in suspected.Crimes)
            {
                dataGridView1.Rows.Add(sample.Key.ToString(), sample.Value.ToString("dd/MM/yyyy"));
            }

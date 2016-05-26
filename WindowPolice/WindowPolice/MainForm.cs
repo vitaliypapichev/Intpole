@@ -66,7 +66,7 @@ namespace WindowPolice
             Dictionary<string, string> Dict = suspects.ElementAt(Convert.ToInt32(cells.Cells[cells.Cells.Count - 1].Value)).ReturnData();
             for (int i = 0; i < form.Controls.Count; i++)
             {
-                foreach(KeyValuePair<string,string> comparer in Dict)
+                foreach(KeyValuePair<string, string> comparer in Dict)
                 {
                     if (form.Controls[i].Text.Equals(comparer.Key))
                         form.Controls[i].Text = comparer.Value;
@@ -83,7 +83,7 @@ namespace WindowPolice
                         PictureBox box = new PictureBox();
                         box = (PictureBox)form.Controls[i];
                         Bitmap Img;
-                        if(comparer.Value == "Arrested")
+                        if (comparer.Value == "In Jail")
                         {
                             Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\busted.png");
                             box.SizeMode = PictureBoxSizeMode.Zoom;
@@ -99,7 +99,8 @@ namespace WindowPolice
             }
             if(form.ShowDialog() != DialogResult.None)
             {
-
+                this.chart1.Series[0].Points.Clear();
+                FindStatistic(comboBox1.Text);
             }
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,56 +127,50 @@ namespace WindowPolice
             {
                 foreach(Suspect compr in suspects)
                 {
-                foreach(KeyValuePair<Crime,DateTime> comparer in compr.Crimes)
-                {
-                    if (Time.Equals("Today"))
+                    foreach(KeyValuePair<Crime,DateTime> comparer in compr.Crimes)
                     {
-                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && DateTime.Today.ToString("dd/MM/yyyy").Equals(comparer.Value.ToString("dd/MM/yyyy")))
+                        if (Time.Equals("Today"))
                         {
-                        count[i] = count[i] + 1;
+                            if (comparer.Key.GetTypeName().Equals(crimes[i]) && DateTime.Today.ToString("dd/MM/yyyy").Equals(comparer.Value.ToString("dd/MM/yyyy")))
+                                count[i] = count[i] + 1;
+                        }
+                        if(Time.Equals("Week"))
+                        {
+                            if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Day >= DateTime.Today.Day - 7 && comparer.Value.Year == DateTime.Today.Year && comparer.Value.Month == DateTime.Today.Month)
+                                count[i] = count[i] + 1;
+                        }
+                        if (Time.Equals("Month"))
+                        {
+                            if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Year == DateTime.Today.Year && comparer.Value.Month == DateTime.Today.Month)
+                                count[i] = count[i] + 1;
+                        }
+                        if (Time.Equals("Year"))
+                        {
+                            if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Year == DateTime.Today.Year)
+                                count[i] = count[i] + 1;
+                        }
+                        if(Time.Equals("All Time"))
+                        {
+                            if(comparer.Key.GetTypeName().Equals(crimes[i]))
+                                count[i] = count[i] + 1;
                         }
                     }
-                    if(Time.Equals("Week"))
-                    {
-                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Day >= DateTime.Today.Day - 7 && comparer.Value.Year == DateTime.Today.Year && comparer.Value.Month == DateTime.Today.Month)
-                        {
-                            count[i] = count[i] + 1;
-                        }
-                    }
-                    if(Time.Equals("Month"))
-                    {
-                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Year == DateTime.Today.Year && comparer.Value.Month == DateTime.Today.Month)
-                        {
-                            count[i] = count[i] + 1;
-                        }
-                    }
-                    if(Time.Equals("Year"))
-                    {
-                        if (comparer.Key.GetTypeName().Equals(crimes[i]) && comparer.Value.Year == DateTime.Today.Year)
-                        {
-                            count[i] = count[i] + 1;
-                        }
-                    }
-                    if(Time.Equals("All Time"))
-                    {
-                        if(comparer.Key.GetTypeName().Equals(crimes[i]))
-                        {
-                            count[i] = count[i] + 1;
-                        }
-                    }
-                }
                 }
             }
-            for(int i = 0; i < count.Length; i++)
-            {
+            for (int i = 0; i < count.Length; i++)
                 this.chart1.Series["Crimes"].Points.AddXY(crimes[i], count[i]);
-            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.chart1.Series[0].Points.Clear();
             FindStatistic(comboBox1.Text);
+        }
+
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SuspectTable.Rows.Clear();
+            Methods.PutActiveIntoTable(SuspectTable, suspects);
         }
 
     }

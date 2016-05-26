@@ -37,18 +37,18 @@ namespace WindowPolice
         }
         public object[] ToArray()
         {
-            object[] obj = new object[10];
-            obj[0] =  this.Name;
-            obj[1] =  this.Surname;
-            obj[2] =  this.Patronymic;
-            obj[3] =  this.BirthData.ToString("dd/MM/yyyy");
-            obj[4] =  this.BirthPlace;
-            obj[5] =  this.Years;
-            obj[6] =  this.Build;
-            obj[7] =  this.Eyes;
-            obj[8] =  this.Hair;
-            obj[9] =  this.Height;
-            return obj;
+            object[] result = new object[10];
+            result[0] =  this.Name;
+            result[1] =  this.Surname;
+            result[2] =  this.Patronymic;
+            result[3] =  this.BirthData.ToString("dd/MM/yyyy");
+            result[4] =  this.BirthPlace;
+            result[5] =  this.Years;
+            result[6] =  this.Build;
+            result[7] =  this.Eyes;
+            result[8] =  this.Hair;
+            result[9] =  this.Height;
+            return result;
         }
     }
 }

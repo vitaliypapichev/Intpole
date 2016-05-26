@@ -17,12 +17,12 @@ namespace WindowPolice
         public Point Location;
         public Story(string Data)
         {
-            char[] arr = { '>', '=', '#' };
-            string[] a = Data.Split(arr);
-            this.State = a[0];
-            this.Place = a[1];
-            this.Fact = a[2];
-            this.Date = Methods.CreateDate(a[3]);
+            char[] chars = { '>', '=', '#' };
+            string[] data = Data.Split(chars);
+            this.State = data[0];
+            this.Place = data[1];
+            this.Fact = data[2];
+            this.Date = Methods.CreateDate(data[3]);
             this.Location = new Point();
         }
         public string[] RetrieveData()

@@ -72,6 +72,7 @@
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
             this.mainToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.mainToolStripMenuItem.Text = "Main Archive";
+            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // archiveToolStripMenuItem
             // 

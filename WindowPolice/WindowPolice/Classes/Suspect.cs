@@ -102,7 +102,7 @@ namespace WindowPolice
             Dict.Add("Status", this.Status);
             Dict.Add("Photo", this.PicLoc);
             Dict.Add("SearchedIn", this.SearchedIn);
-            Dict.Add("No", this.PhysData.BirthData.Day.ToString() + this.PhysData.BirthData.Month.ToString() + this.PhysData.BirthData.Year.ToString() + this.PhysData.Name[0] + this.PhysData.Surname[0]);
+            Dict.Add("No", this.PhysData.BirthData.Day.ToString() + this.PhysData.BirthData.Month.ToString() + this.PhysData.BirthData.Year.ToString() + this.PhysData.Name[0].ToString().ToUpper() + this.PhysData.Surname[0].ToString().ToUpper());
             return Dict;
         }
         protected virtual Dictionary<Crime, DateTime> CreateDictionary(string param)

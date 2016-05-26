@@ -29,7 +29,7 @@ namespace WindowPolice
         {
             Methods.FillStory(this.PointToClient(Cursor.Position), dataGridView1, suspected.History);
         }
-        private void Draw()
+        private void draw()
         {
             Graphics Graph = this.CreateGraphics();
             Methods.RetrieveCities(suspected.SearchedIn).Draw(Graph, suspected.History);
@@ -37,7 +37,7 @@ namespace WindowPolice
 
         private void Map_Paint(object sender, PaintEventArgs e)
         {
-            Draw();
+            draw();
         }
 
         private void Map_MouseMove(object sender, MouseEventArgs e)

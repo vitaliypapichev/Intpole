@@ -116,28 +116,15 @@ namespace WindowPolice
     }
     public class Hijacking : Crime
     {
-        protected string gravofoff;
+        protected string gravity;
         public Hijacking()
             : base()
         {
-            this.gravofoff = "Small Gravity";
+            this.gravity = "Small Gravity";
         }
         public Hijacking(string CrimeName)
             : base(CrimeName)
-        {
-            this.specialization = CrimeName;
-            switch(CrimeName)
-            {
-                case "Plane Hj.": this.gravofoff = "High Gravity"; break;
-                case "Ship Hj.": this.gravofoff = "High Gravity"; break;
-                case "Train Hj.": this.gravofoff = "High Gravity"; break;
-                case "SlTransp Hj.": this.gravofoff = "High Gravity"; break;
-                case "Mtbike Hj.": this.gravofoff = "Medium Gravity"; break;
-                case "Car Hj.": this.gravofoff = "Medium Gravity"; break;
-                case "Bycicle Hj.": this.gravofoff = "Small Gravity"; break;
-                case "Skate Hj.": this.gravofoff = "Small Gravity"; break;
-            }
-        }
+        { }
         public override string ToString()
         {
             return "Hijacking>" + this.specialization;

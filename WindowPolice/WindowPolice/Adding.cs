@@ -17,8 +17,8 @@ namespace WindowPolice
     {
         private List<string> crimes;
         private List<string> story;
-        private DateTime crimedate;
-        private DateTime lastseen;
+        private DateTime crimeDate;
+        private DateTime lastSeen;
         private string photo;
         private SuspectCollection suspect;
         private DataGridView table;
@@ -28,15 +28,10 @@ namespace WindowPolice
             crimes = new List<string>();
             story = new List<string>();
             photo = "";
-            crimedate = new DateTime();
-            lastseen = new DateTime();
+            crimeDate = new DateTime();
+            lastSeen = new DateTime();
             suspect = Susp;
             this.table = Table;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -60,13 +55,13 @@ namespace WindowPolice
         private void button1_Click(object sender, EventArgs e)
         {
             string CrimeType = '>' +comboBox2.Text;
-            if(comboBox1.Text.ToLower().IndexOf("crime") != -1)
+            if (comboBox1.Text.ToLower().IndexOf("crime") != -1)
             {
                 CrimeType = "PropCrime" + CrimeType;
             }
             else
             {
-                if(comboBox1.Text.ToLower().IndexOf("life") != -1)
+                if (comboBox1.Text.ToLower().IndexOf("life") != -1)
                     CrimeType = "LifeThreat" + CrimeType;
                 else
                     CrimeType = comboBox1.Text + CrimeType;
@@ -74,7 +69,7 @@ namespace WindowPolice
             string date = dateTimePicker1.Value.ToString("dd/MM/yyyy");
             if (CrimeType == ">" || date == "")
                 return;
-            CheckForDateCrime(dateTimePicker1.Value);
+            checkForDateCrime(dateTimePicker1.Value);
             crimes.Add(CrimeType + ':' + date);
             dataGridView1.Rows.Add(comboBox1.Text + '>' + comboBox2.Text, date);
         }
@@ -126,7 +121,7 @@ namespace WindowPolice
             string date = dateTimePicker2.Value.ToString("dd/MM/yyyy");
             if (city == ">" || story == "" || date == "")
                 return;
-            CheckForDateStory(dateTimePicker2.Value);
+            checkForDateStory(dateTimePicker2.Value);
             dataGridView2.Rows.Add(city, story, date);
             this.story.Add(city + '#' + story + '=' + date);
             Methods.PutActiveIntoTable(table, suspect);
@@ -149,11 +144,11 @@ namespace WindowPolice
 
         private void button4_Click(object sender, EventArgs e)
         {
-            for (int i = this.Controls.Count-1; i >= 0 ; i--)
+            for (int i = this.Controls.Count-1; i >= 0; i--)
             {
                 if(this.Controls[i].GetType().Name.ToLower().Equals("textbox"))
                 {
-                    if(this.Controls[i].Text.Length == 0)
+                    if (this.Controls[i].Text.Length == 0)
                     {
                         if (!this.Controls[i].Name.Equals("textBox3") && !this.Controls[i].Name.Equals("textBox6")) 
                         { 
@@ -168,12 +163,12 @@ namespace WindowPolice
                 MessageBox.Show("Suspect must have at least one crime and one fact");
                 return;
             }
-            string[] pointers = { "name", "surname", "patro", "birth", "placeofb", "build", "hair", "eyes", "height", this.crimes.Count.ToString(), FindLastCrime(), "wife", "children", FindLastPos(), CrimesToString(), "searchedin", "status", this.photo, StoryToString() };
+            string[] pointers = { "name", "surname", "patro", "birth", "placeofb", "build", "hair", "eyes", "height", this.crimes.Count.ToString(), findLastCrime(), "wife", "children", findLastPos(), crimesToString(), "searchedin", "status", this.photo, storyToString() };
             for (int i = 0; i < pointers.Length; i++ )
             {
-                for(int j = 0; j < this.Controls.Count; j++)
+                for (int j = 0; j < this.Controls.Count; j++)
                 {
-                    if(this.Controls[j].Name.Equals(pointers[i]) && this.Controls[j].GetType().Name.ToLower().Equals("textbox"))
+                    if (this.Controls[j].Name.Equals(pointers[i]) && this.Controls[j].GetType().Name.ToLower().Equals("textbox"))
                         pointers[i] = this.Controls[j].Text;
                     if (this.Controls[j].Name.Equals(pointers[i]) && this.Controls[j].GetType().Name.ToLower().Equals("combobox"))
                         pointers[i] = this.Controls[j].Text.Trim();
@@ -189,47 +184,47 @@ namespace WindowPolice
             Methods.PutActiveIntoTable(table, suspect);
             this.Close();
         }
-        private string FindLastCrime()
+        private string findLastCrime()
         {
-            foreach(string comparer in crimes)
+            foreach (string comparer in crimes)
             {
-                if (comparer.IndexOf(crimedate.ToString("dd/MM/yyyy")) != -1)
+                if (comparer.IndexOf(crimeDate.ToString("dd/MM/yyyy")) != -1)
                 return comparer.Substring(0, comparer.IndexOf(':'));
             }
-            return crimedate.ToString("dd/MM/yyyy");
+            return crimeDate.ToString("dd/MM/yyyy");
         }
-        private string CrimesToString()
+        private string crimesToString()
         {
             string result = "";
             bool point = false;
-            foreach(string comparer in crimes)
+            foreach (string comparer in crimes)
             {
-                if(point)
+                if (point)
                 result += ", ";
                 result += comparer;
                 point = true;
             }
             return result;
         }
-        private void CheckForDateCrime(DateTime time1)
+        private void checkForDateCrime(DateTime time1)
         {
-            if (time1.Year > crimedate.Year)
+            if (time1.Year > crimeDate.Year)
             {
-                crimedate = time1;
+                crimeDate = time1;
                 return;
             }
-            if (time1.Year == crimedate.Year)
+            if (time1.Year == crimeDate.Year)
             {
-                if (time1.Month > crimedate.Month)
+                if (time1.Month > crimeDate.Month)
                 {
-                    crimedate = time1;
+                    crimeDate = time1;
                     return;
                 }
-                if (time1.Month == crimedate.Month)
+                if (time1.Month == crimeDate.Month)
                 {
-                    if (time1.Day > crimedate.Day)
+                    if (time1.Day > crimeDate.Day)
                     {
-                        crimedate = time1;
+                        crimeDate = time1;
                         return;
                     }
                     else
@@ -239,25 +234,25 @@ namespace WindowPolice
                 }
             }
         }
-        private void CheckForDateStory(DateTime time1)
+        private void checkForDateStory(DateTime time1)
         {
-            if (time1.Year > lastseen.Year)
+            if (time1.Year > lastSeen.Year)
             {
-                lastseen = time1;
+                lastSeen = time1;
                 return;
             }
-            if (time1.Year == lastseen.Year)
+            if (time1.Year == lastSeen.Year)
             {
-                if (time1.Month > lastseen.Month)
+                if (time1.Month > lastSeen.Month)
                 {
-                    lastseen = time1;
+                    lastSeen = time1;
                     return;
                 }
-                if (time1.Month == lastseen.Month)
+                if (time1.Month == lastSeen.Month)
                 {
-                    if (time1.Day > lastseen.Day)
+                    if (time1.Day > lastSeen.Day)
                     {
-                        lastseen = time1;
+                        lastSeen = time1;
                         return;
                     }
                     else
@@ -267,7 +262,7 @@ namespace WindowPolice
                 }
             }
         }
-        private string StoryToString()
+        private string storyToString()
         {
             string result = "";
             bool point = false;
@@ -280,14 +275,14 @@ namespace WindowPolice
             }
             return result;
         }
-        private string FindLastPos()
+        private string findLastPos()
         {
             foreach (string comparer in story)
             {
-                if (comparer.IndexOf(lastseen.ToString("dd/MM/yyyy")) != -1)
+                if (comparer.IndexOf(lastSeen.ToString("dd/MM/yyyy")) != -1)
                     return comparer.Substring(0, comparer.IndexOf('#'));
             }
-            return lastseen.ToString("dd/MM/yyyy");
+            return lastSeen.ToString("dd/MM/yyyy");
         }
         private void textBox1_Enter(object sender, EventArgs e)
         {
@@ -342,10 +337,10 @@ namespace WindowPolice
             }
         }
 
-        private void birth_DateChanged(object sender, DateRangeEventArgs e)
+        private void birth_DateSelected(object sender, DateRangeEventArgs e)
         {
             int Years = (birth.SelectionRange.Start.DayOfYear - DateTime.Now.DayOfYear) >= 0 ? DateTime.Now.Year - birth.SelectionRange.Start.Year - 1 : DateTime.Now.Year - birth.SelectionRange.Start.Year;
-            if(Years < 18)
+            if (Years < 18)
             {
                 MessageBox.Show("Suspect is too young to be in International Searching. Try again");
                 birth.SelectionRange.Start = new DateTime(DateTime.Now.Year - 18, DateTime.Now.Month, DateTime.Now.Day);

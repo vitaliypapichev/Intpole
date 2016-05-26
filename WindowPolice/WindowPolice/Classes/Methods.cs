@@ -106,7 +106,7 @@ namespace WindowPolice
             StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\"+County+".ipd");
             Char[] characters = { ';' };
             string[] result = filerow.ReadLine().Split(characters);
-            for(int i = 0; i < result.Length; i++)
+            for (int i = 0; i < result.Length; i++)
             {
                 Combob.Items.Add(result[i]);
             }
@@ -118,17 +118,17 @@ namespace WindowPolice
             Char[] characters = { ';' };
             string result = filerow.ReadLine();
             string[] query;
-            if(result.Split(characters)[0].Equals(Crime))
+            if (result.Split(characters)[0].Equals(Crime))
             {
                 query = result.Substring(result.IndexOf(';')+1).Split(characters);
-                for(int i = 0; i < query.Length; i++)
+                for (int i = 0; i < query.Length; i++)
                 {
                     Combob.Items.Add(query[i]);
                 }
                 Combob.Text = Combob.Items[0].ToString();
                 return;
             }
-            while(!result.Split(characters)[0].Equals(Crime))
+            while (!result.Split(characters)[0].Equals(Crime))
             {
                 result = filerow.ReadLine();
             }

@@ -58,7 +58,7 @@ namespace WindowPolice
         private void fillTableWithCrimes()
         {
             dataGridView1.Rows.Clear();
-            foreach(KeyValuePair<Crime,DateTime> comparer in suspected.Crimes)
+            foreach (KeyValuePair<Crime, DateTime> comparer in suspected.Crimes)
             {
                 dataGridView1.Rows.Add(comparer.Key.ToString(), comparer.Value.ToString("dd/MM/yyyy"));
             }
@@ -103,7 +103,7 @@ namespace WindowPolice
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(suspected.Crimes.Count == 1)
+            if (suspected.Crimes.Count == 1)
             {
                 MessageBox.Show("Impossible to delete all crimes");
                 return;

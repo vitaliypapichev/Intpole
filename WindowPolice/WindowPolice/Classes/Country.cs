@@ -19,11 +19,7 @@ namespace WindowPolice
         }
         public void CreateCities(string Data)
         {
-           Cities.Add(Data.Substring(0, Data.IndexOf(':')), CreatePoint(Data.Substring(Data.IndexOf(':') + 1)));
-        }
-        private Point CreatePoint(string Data)
-        {
-            return new Point(Convert.ToInt32(Data.Substring(0, Data.IndexOf(';'))), Convert.ToInt32(Data.Substring(Data.IndexOf(';') + 1)));
+           Cities.Add(Data.Substring(0, Data.IndexOf(':')), createPoint(Data.Substring(Data.IndexOf(':') + 1)));
         }
         public void Draw(Graphics Graphic, StoryCollection Collection)
         {
@@ -69,7 +65,12 @@ namespace WindowPolice
             Path.AddEllipse(pos2.X - 5, pos2.Y - 5, 10, 10);
             Graphic.FillEllipse(brush, pos2.X - 5, pos2.Y - 5, 10, 10);
             Graphic.DrawPath(new Pen(Color.Black, 2), Path);
+            if(todelete)
             Collection.Remove(Collection.ElementAt(Collection.Count - 1));
+        }
+        private Point createPoint(string Data)
+        {
+            return new Point(Convert.ToInt32(Data.Substring(0, Data.IndexOf(';'))), Convert.ToInt32(Data.Substring(Data.IndexOf(';') + 1)));
         }
     }
 }

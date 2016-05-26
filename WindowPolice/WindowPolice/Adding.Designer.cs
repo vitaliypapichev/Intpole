@@ -157,7 +157,6 @@
             this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 15;
             this.label1.Text = "Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -234,7 +233,7 @@
             this.birth.Location = new System.Drawing.Point(436, 94);
             this.birth.Name = "birth";
             this.birth.TabIndex = 33;
-            this.birth.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.birth_DateChanged);
+            this.birth.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.birth_DateSelected);
             // 
             // height
             // 
@@ -446,9 +445,9 @@
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(423, 351);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 20);
+            this.label5.Size = new System.Drawing.Size(44, 20);
             this.label5.TabIndex = 48;
-            this.label5.Text = "story";
+            this.label5.Text = "Story";
             // 
             // comboBox3
             // 

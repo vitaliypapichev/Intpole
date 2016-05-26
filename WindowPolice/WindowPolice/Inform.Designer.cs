@@ -499,9 +499,9 @@
             this.label40.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label40.Location = new System.Drawing.Point(490, 412);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(104, 24);
+            this.label40.Size = new System.Drawing.Size(107, 24);
             this.label40.TabIndex = 42;
-            this.label40.Text = "crimes list :";
+            this.label40.Text = "Crimes list :";
             // 
             // InterpolAction
             // 

@@ -22,9 +22,9 @@ namespace WindowPolice
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Find(collection, table, textBox1.Text);
+            find(collection, table, textBox1.Text);
         }
-        private void Find(SuspectCollection Collect, DataGridView Table, string Text)
+        private void find(SuspectCollection Collect, DataGridView Table, string Text)
         {
             Char[] splitters = { ';' };
             string[] findparams = Text.Split(splitters);

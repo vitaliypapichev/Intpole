@@ -13,7 +13,7 @@ namespace WindowPolice
         {
             Char[] characters = { ';' };
             string[] history = Data.Split(characters);
-            foreach(string str in history)
+            foreach (string str in history)
             {
                 this.Add(new Story(str));
             }
@@ -22,7 +22,7 @@ namespace WindowPolice
         {
             string result = "";
             bool dotcomma = false;
-            foreach(Story comparer in this)
+            foreach (Story comparer in this)
             {
                 if (dotcomma)
                     result += ';';
