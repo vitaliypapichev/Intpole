@@ -90,7 +90,7 @@ namespace WindowPolice
         }
         public static Country RetrieveCities(string Data)
         {
-            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\"+Data+".ipd");
+            StreamReader filerow = new StreamReader(@"DataBases\"+Data+".ipd");
             filerow.ReadLine();
             string country = filerow.ReadLine();
             Country CountryName = new Country();
@@ -107,7 +107,7 @@ namespace WindowPolice
         public static void FindRegions(string County, ComboBox Combob)
         {
             Combob.Items.Clear();
-            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\"+County+".ipd");
+            StreamReader filerow = new StreamReader(@"DataBases\"+County+".ipd");
             Char[] characters = { ';' };
             string[] result = filerow.ReadLine().Split(characters);
             for (int i = 0; i < result.Length; i++)
@@ -118,7 +118,7 @@ namespace WindowPolice
         }
         public static void FindInFileCrime(string Crime, ComboBox Combob)
         {
-            StreamReader filerow = new StreamReader(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\crimes.ipd");
+            StreamReader filerow = new StreamReader(@"DataBases\crimes.ipd");
             Char[] characters = { ';' };
             string result = filerow.ReadLine();
             string[] query;

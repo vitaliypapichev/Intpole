@@ -33,7 +33,7 @@ namespace WindowPolice
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.BackgroundImage = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\europ.png");
+            this.BackgroundImage = new Bitmap(@"Images\europ.png");
             pictureBox1.Visible = false;
             pictureBox2.Visible = false;
             pictureBox3.Visible = true;
@@ -62,7 +62,7 @@ namespace WindowPolice
 
         private void WorldMap_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FileStream file = new FileStream(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\suspects.ipd", FileMode.Create);
+            FileStream file = new FileStream(@"DataBases\suspects.ipd", FileMode.Create);
             StreamWriter writer = new StreamWriter(file);
             foreach (Suspect Susp in suspects)
             {
@@ -74,7 +74,7 @@ namespace WindowPolice
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            this.BackgroundImage = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\world-map-large.png");
+            this.BackgroundImage = new Bitmap(@"Images\world-map-large.png");
             pictureBox1.Visible = true;
             pictureBox2.Visible = true;
             pictureBox3.Visible = false;

@@ -27,7 +27,7 @@ namespace WindowPolice
             InitializeComponent();
             crimes = new List<string>();
             story = new List<string>();
-            photo = @"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\Question-mark.png";
+            photo = @"Images\Question-mark.png";
             crimeDate = new DateTime();
             lastSeen = new DateTime();
             suspect = Susp;
@@ -39,11 +39,12 @@ namespace WindowPolice
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = new Bitmap(@""+openFileDialog1.InitialDirectory + openFileDialog1.FileName);
-                this.photo = openFileDialog1.InitialDirectory + openFileDialog1.FileName;
+                Image.FromFile(@"" + openFileDialog1.InitialDirectory + openFileDialog1.FileName).Save(@"Images\" + openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf(@"\")));
+                this.photo = @"Images\" + openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf(@"\"));
             }
             else
             {
-                this.photo = @"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\Question-mark.png";
+                this.photo = @"Images\Question-mark.png";
             }
         }
 

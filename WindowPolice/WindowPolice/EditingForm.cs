@@ -150,7 +150,9 @@ namespace WindowPolice
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = new Bitmap(@"" + openFileDialog1.InitialDirectory + openFileDialog1.FileName);
-                suspected.PicLoc = openFileDialog1.InitialDirectory + openFileDialog1.FileName;
+                MessageBox.Show(openFileDialog1.FileName);
+                Image.FromFile(@"" + openFileDialog1.InitialDirectory + openFileDialog1.FileName).Save(@"Images\"+openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf(@"\")));
+                suspected.PicLoc = @"Images\" + openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf(@"\"));
             }
             else
             {

@@ -84,12 +84,12 @@ namespace WindowPolice
                         Bitmap Img;
                         if (comparer.Value == "In Jail")
                         {
-                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\busted.png");
+                            Img = new Bitmap(@"Images\busted.png");
                             box.SizeMode = PictureBoxSizeMode.Zoom;
                         }
                         else
                         {
-                            Img = new Bitmap(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\View\Images\LOGO_WANTED_V3_TORCIDO_ROJO.png");
+                            Img = new Bitmap(@"Images\LOGO_WANTED_V3_TORCIDO_ROJO.png");
                             box.SizeMode = PictureBoxSizeMode.StretchImage;
                         }
                         box.Image = Img;

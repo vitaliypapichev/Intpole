@@ -12,7 +12,7 @@ namespace WindowPolice
     {
         public void FillSuspectCollection()
         {
-                FileStream file = new FileStream(@"D:\OOp\Kursovaya\Interpolice\Intpole\WindowPolice\WindowPolice\DataBases\suspects.ipd", FileMode.Open);
+                FileStream file = new FileStream(@"DataBases\suspects.ipd", FileMode.Open);
                 StreamReader filerow = new StreamReader(file);
                 string suspect = filerow.ReadLine();
                 if (suspect != null)
