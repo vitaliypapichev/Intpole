@@ -16,8 +16,8 @@ namespace WindowPolice
         public Dictionary<Crime, DateTime> Crimes;
         public bool IfWife { get; set; }
         public bool IfChildren { get; set; }
-        public string LastSeen { get; protected set; }
-        public Crime LastCrime { get; protected set; }
+        public string LastSeen { get; set; }
+        public Crime LastCrime { get; set; }
         public string Status { get; set; }
         public string PicLoc;
         public string SearchedIn;

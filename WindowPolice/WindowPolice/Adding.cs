@@ -47,11 +47,6 @@ namespace WindowPolice
             }
         }
 
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string CrimeType = '>' +comboBox2.Text;
@@ -72,11 +67,6 @@ namespace WindowPolice
             checkForDateCrime(dateTimePicker1.Value);
             crimes.Add(CrimeType + ':' + date);
             dataGridView1.Rows.Add(comboBox1.Text + '>' + comboBox2.Text, date);
-        }
-
-        private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-   
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,6 +108,12 @@ namespace WindowPolice
         {
             string city = comboBox3.Text + '>' + textBox6.Text;
             string story = textBox3.Text;
+            if (Methods.ifCheck(textBox3, textBox6))
+            {
+                textBox6.BackColor = Color.FromArgb(255, 128, 128);
+                textBox3.BackColor = Color.FromArgb(255, 128, 128);
+                return;
+            }
             string date = dateTimePicker2.Value.ToString("dd/MM/yyyy");
             if (city == ">" || story == "" || date == "")
                 return;
@@ -148,6 +144,11 @@ namespace WindowPolice
             {
                 if(this.Controls[i].GetType().Name.ToLower().Equals("textbox"))
                 {
+                    if (this.Controls[i].GetType().Name.ToLower().Equals("textbox") && Methods.ifCheck((TextBox)this.Controls[i]))
+                    {
+                        this.Controls[i].BackColor = Color.FromArgb(255, 128, 128);
+                        return;
+                    }
                     if (this.Controls[i].Text.Length == 0)
                     {
                         if (!this.Controls[i].Name.Equals("textBox3") && !this.Controls[i].Name.Equals("textBox6")) 
@@ -354,5 +355,16 @@ namespace WindowPolice
             }
             return false;
         }
+
+        private void textBox3_Enter(object sender, EventArgs e)
+        {
+            textBox3.BackColor = Color.White;
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            textBox6.BackColor = Color.White;
+        }
+
     }
 }

@@ -37,7 +37,20 @@ namespace WindowPolice
         {
             if (comboBox1.Text.Equals("Crime") || comboBox2.Text.Length == 0)
                 return;
-            suspected.Crimes.Add(Methods.SetCrime(comboBox1.Text + ">" + comboBox2.Text, '>'), dateTimePicker1.Value);
+            string CrimeType;
+            if(comboBox1.Text.Equals("Corruption"))
+                CrimeType = "corrupt";
+            else
+                CrimeType= comboBox1.Text;
+            DateTime time = new DateTime();
+            foreach (KeyValuePair<Crime, DateTime> comparer in suspected.Crimes)
+            {
+                if (comparer.Key.ToString().ToLower().Equals(suspected.LastCrime.ToString().ToLower()))
+                    time = comparer.Value;
+            }
+            if(dateTimePicker1.Value.Year - time.Year >= 0 && dateTimePicker1.Value.Month - time.Month >= 0 && dateTimePicker1.Value.Day - time.Day >= 0)
+            suspected.LastCrime = Methods.SetCrime(CrimeType + '>' + comboBox2.Text, '>');
+            suspected.Crimes.Add(Methods.SetCrime(CrimeType + ">" + comboBox2.Text, '>'), dateTimePicker1.Value);
             fillTableWithCrimes();
         }
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,7 +89,17 @@ namespace WindowPolice
         {
             if (textBox1.Text.Length == 0 || comboBox4.Text.Length == 0 || textBox3.Text.Length == 0)
                 return;
-            suspected.History.Add(new Story(comboBox4.Text + '>' + textBox3.Text + '#' + textBox1.Text + '=' + dateTimePicker1.Value.ToString("dd/MM/yyyy")));
+            if (Methods.ifCheck(textBox1, textBox3))
+                return;
+            DateTime time = new DateTime();
+            foreach(Story comparer in suspected.History)
+            {
+                if(((comparer.State + '>' + comparer.Place).ToLower()).Equals(suspected.LastSeen.ToLower()))
+                    time = comparer.Date;
+            }
+            if(dateTimePicker2.Value.Year - time.Year >= 0 && dateTimePicker2.Value.Month - time.Month >= 0 && dateTimePicker2.Value.Day - time.Day >= 0)
+            suspected.LastSeen = comboBox4.Text + '>' + textBox3.Text;
+            suspected.History.Add(new Story(comboBox4.Text + '>' + textBox3.Text + '#' + textBox1.Text + '=' + dateTimePicker2.Value.ToString("dd/MM/yyyy")));
             fillTableWithEvents();
         }
 

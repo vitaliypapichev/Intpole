@@ -78,6 +78,7 @@
             // 
             // Photo
             // 
+            this.Photo.BackColor = System.Drawing.Color.Transparent;
             this.Photo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Photo.Cursor = System.Windows.Forms.Cursors.Default;
             this.Photo.ErrorImage = ((System.Drawing.Image)(resources.GetObject("Photo.ErrorImage")));
@@ -85,7 +86,7 @@
             this.Photo.InitialImage = ((System.Drawing.Image)(resources.GetObject("Photo.InitialImage")));
             this.Photo.Location = new System.Drawing.Point(12, 12);
             this.Photo.Name = "Photo";
-            this.Photo.Size = new System.Drawing.Size(167, 200);
+            this.Photo.Size = new System.Drawing.Size(176, 200);
             this.Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Photo.TabIndex = 0;
             this.Photo.TabStop = false;
@@ -311,6 +312,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label13.Location = new System.Drawing.Point(72, 238);
             this.label13.Name = "label13";
@@ -321,6 +323,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
             this.label22.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label22.Location = new System.Drawing.Point(489, 41);
             this.label22.Name = "label22";
@@ -364,6 +367,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.Transparent;
             this.label26.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label26.Location = new System.Drawing.Point(489, 243);
             this.label26.Name = "label26";
@@ -550,6 +554,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1021, 567);

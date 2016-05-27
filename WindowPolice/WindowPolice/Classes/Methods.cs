@@ -72,6 +72,10 @@ namespace WindowPolice
         {
             string CrimeName = CrimeType.Substring(0, CrimeType.IndexOf(ch)).Trim();
             string CrimeSpec = CrimeType.Substring(CrimeType.IndexOf(ch)+1);
+            if(CrimeName.ToLower().Equals("corruption"))
+            {
+                return new Corruption(CrimeSpec);
+            }
             switch(CrimeName.ToLower())
             {
                 case "propcrime": return new PropertyCrime(CrimeSpec);
@@ -138,6 +142,18 @@ namespace WindowPolice
                 Combob.Items.Add(query[i]);
             }
             Combob.Text = Combob.Items[0].ToString();
+        }
+        public static bool ifCheck(params TextBox[] boxes)
+        {
+            foreach (TextBox Box in boxes)
+            {
+                if (Box.Text.IndexOf('#') != -1 || Box.Text.IndexOf('~') != -1 || Box.Text.IndexOf('=') != -1 || Box.Text.IndexOf(':') != -1 || Box.Text.IndexOf('>') != -1)
+                {
+                    Box.BackColor = Color.FromArgb(255, 128, 128);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
