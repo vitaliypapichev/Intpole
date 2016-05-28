@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace WindowPolice
 {
-    delegate DateTime GetDate(string type);
 
     public class Suspect
     {

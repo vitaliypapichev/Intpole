@@ -48,10 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adding.cs">
+    <Compile Include="Forms\Adding.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Adding.Designer.cs">
+    <Compile Include="Forms\Adding.Designer.cs">
       <DependentUpon>Adding.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Country.cs" />
@@ -62,69 +62,69 @@
     <Compile Include="Classes\StoryCollection.cs" />
     <Compile Include="Classes\Suspect.cs" />
     <Compile Include="Classes\SuspectCollection.cs" />
-    <Compile Include="Crimes List.cs">
+    <Compile Include="Forms\Crimes List.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Crimes List.Designer.cs">
+    <Compile Include="Forms\Crimes List.Designer.cs">
       <DependentUpon>Crimes List.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditingForm.cs">
+    <Compile Include="Forms\EditingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditingForm.Designer.cs">
+    <Compile Include="Forms\EditingForm.Designer.cs">
       <DependentUpon>EditingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormForSearching.cs">
+    <Compile Include="Forms\FormForSearching.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormForSearching.Designer.cs">
+    <Compile Include="Forms\FormForSearching.Designer.cs">
       <DependentUpon>FormForSearching.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inform.cs">
+    <Compile Include="Forms\Inform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inform.Designer.cs">
+    <Compile Include="Forms\Inform.Designer.cs">
       <DependentUpon>Inform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Map.cs">
+    <Compile Include="Forms\Map.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Map.Designer.cs">
+    <Compile Include="Forms\Map.Designer.cs">
       <DependentUpon>Map.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WorldMap.cs">
+    <Compile Include="Forms\WorldMap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorldMap.Designer.cs">
+    <Compile Include="Forms\WorldMap.Designer.cs">
       <DependentUpon>WorldMap.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Adding.resx">
+    <EmbeddedResource Include="Forms\Adding.resx">
       <DependentUpon>Adding.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Crimes List.resx">
+    <EmbeddedResource Include="Forms\Crimes List.resx">
       <DependentUpon>Crimes List.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditingForm.resx">
+    <EmbeddedResource Include="Forms\EditingForm.resx">
       <DependentUpon>EditingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormForSearching.resx">
+    <EmbeddedResource Include="Forms\FormForSearching.resx">
       <DependentUpon>FormForSearching.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inform.resx">
+    <EmbeddedResource Include="Forms\Inform.resx">
       <DependentUpon>Inform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Map.resx">
+    <EmbeddedResource Include="Forms\Map.resx">
       <DependentUpon>Map.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -136,9 +136,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="WorldMap.resx">
+    <EmbeddedResource Include="Forms\WorldMap.resx">
       <DependentUpon>WorldMap.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\DataSources\FormForSearching.datasource" />
     <None Include="Properties\DataSources\HumanPhysData.datasource" />
     <None Include="Properties\DataSources\Interpole.datasource" />
